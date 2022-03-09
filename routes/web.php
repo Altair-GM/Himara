@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// {{{{{{{{{{{{{Vieuw Front}}}}}}}}}}}}}
+
+Route::get('/', function () { return view('pages.home');});
+Route::get("/rooms",[FrontController::class,"rooms"]);
+Route::get("/team",[FrontController::class,"team"]);
+Route::get("/gallery",[FrontController::class,"gallery"]);
+Route::get("/contact",[FrontController::class,"contact"]);
+Route::get("/contact",[FrontController::class,"contact"]);
+
+
+// {{{{{{{{{{{{{Vieuw BackEnd}}}}}}}}}}}}}
+
+// [[[[[[[[[[[[Complements composants]]]]]]]]]]]]
+Route::get("/style-guide",[FrontController::class,"styleGuide"]);
+Route::get("/buttons",[FrontController::class,"buttons"]);
+Route::get("/icons",[FrontController::class,"icons"]);
+
+// [[[[[[[[[[[[[[Breeze Authentification]]]]]]]]]]]]]]
+Route::get('/dashboard', function () 
+{return view('dashboard');})->middleware(['auth'])->name('dashboard');
+require __DIR__.'/auth.php';
