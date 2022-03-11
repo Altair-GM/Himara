@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
+
   public function rooms()
   {
       return view("pages.rooms");
@@ -34,4 +35,5 @@ class FrontController extends Controller
   {
       return view("pages.elements.icons");
   }
+  
 }

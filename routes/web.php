@@ -16,15 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 // {{{{{{{{{{{{{Vieuw Front}}}}}}}}}}}}}
 
-Route::get('/', function () { return view('pages.home');});
-Route::get("/rooms",[FrontController::class,"rooms"]);
-Route::get("/team",[FrontController::class,"team"]);
-Route::get("/gallery",[FrontController::class,"gallery"]);
-Route::get("/contact",[FrontController::class,"contact"]);
-Route::get("/contact",[FrontController::class,"contact"]);
+Route::get('/', function () { return view('pages.home');})->name("home");
+Route::get("/rooms",[FrontController::class,"rooms"])->name("rooms");
+Route::get("/team",[FrontController::class,"team"])->name("team");
+Route::get("/gallery",[FrontController::class,"gallery"])->name("gallery");
+Route::get("/contact",[FrontController::class,"contact"])->name("contact");
 
 
-// {{{{{{{{{{{{{Vieuw BackEnd}}}}}}}}}}}}}
+// {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{ Vieuw BackEnd}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}} 
 
 // [[[[[[[[[[[[Complements composants]]]]]]]]]]]]
 Route::get("/style-guide",[FrontController::class,"styleGuide"]);
