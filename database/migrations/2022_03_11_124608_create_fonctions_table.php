@@ -15,6 +15,7 @@ class CreateFonctionsTable extends Migration
     {
         Schema::create('fonctions', function (Blueprint $table) {
             $table->id();
+            $table->string("nom");
             $table->timestamps();
         });
     }

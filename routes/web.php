@@ -21,6 +21,7 @@ Route::get("/rooms",[FrontController::class,"rooms"])->name("rooms");
 Route::get("/team",[FrontController::class,"team"])->name("team");
 Route::get("/gallery",[FrontController::class,"gallery"])->name("gallery");
 Route::get("/contact",[FrontController::class,"contact"])->name("contact");
+Route::get("/blog",[FrontController::class,"blog"])->name("blog");
 
 
 // {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{ Vieuw BackEnd}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}} 

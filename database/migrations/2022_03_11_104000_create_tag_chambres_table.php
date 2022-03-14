@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChambreServicesTable extends Migration
+class CreateTagChambresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateChambreServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('chambre_services', function (Blueprint $table) {
+        Schema::create('tag_chambres', function (Blueprint $table) {
             $table->id();
+            $table->string("nom");
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateChambreServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chambre_services');
+        Schema::dropIfExists('tag_chambres');
     }
 }

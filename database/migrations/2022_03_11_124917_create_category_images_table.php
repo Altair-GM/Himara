@@ -15,6 +15,7 @@ class CreateCategoryImagesTable extends Migration
     {
         Schema::create('category_images', function (Blueprint $table) {
             $table->id();
+            $table->integer("nom");
             $table->timestamps();
         });
     }

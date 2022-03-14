@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTagChambresTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateTagChambresTable extends Migration
      */
     public function up()
     {
-        Schema::create('tag_chambres', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
+            $table->string("nom");
+            $table->string("url");
+            $table->unsignedBigInteger("category_image_id");
+            $table->foreign("category_image_id")->on("category_images")->references("id");
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateTagChambresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tag_chambres');
+        Schema::dropIfExists('images');
     }
 }

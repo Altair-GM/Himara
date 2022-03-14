@@ -15,6 +15,11 @@ class CreateInfosTable extends Migration
     {
         Schema::create('infos', function (Blueprint $table) {
             $table->id();
+            $table->string("email");
+            $table->string("adresse");
+            $table->bigInteger("phone");
+            $table->bigInteger("gsm");
+            $table->string("site");
             $table->timestamps();
         });
     }

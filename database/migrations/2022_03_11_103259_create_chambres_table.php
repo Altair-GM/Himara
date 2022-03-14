@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use League\CommonMark\Reference\Reference;
 
 class CreateChambresTable extends Migration
 {
@@ -15,6 +16,15 @@ class CreateChambresTable extends Migration
     {
         Schema::create('chambres', function (Blueprint $table) {
             $table->id();
+            $table->string("nom");
+            $table->text("description");
+            $table->string("image");
+            $table->float("prix");
+            $table->integer("max");
+            $table->integer("sofa");
+            $table->integer("lit");
+            $table->unsignedBigInteger("category_chambre_id");
+            $table->foreign("category_chambre_id")->on("category_chambres")->references("id");
             $table->timestamps();
         });
     }

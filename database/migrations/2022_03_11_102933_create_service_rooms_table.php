@@ -15,6 +15,7 @@ class CreateServiceRoomsTable extends Migration
     {
         Schema::create('service_rooms', function (Blueprint $table) {
             $table->id();
+            $table->string("nom");
             $table->timestamps();
         });
     }

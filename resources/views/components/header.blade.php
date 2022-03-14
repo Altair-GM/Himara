@@ -84,6 +84,9 @@
                 <li class="menu-item dropdown">
                   <a href="{{ route("gallery") }}">GALLERY</a>
                 </li>
+                <li class="menu-item dropdown">
+                  <a href="{{ route("blog") }}">BLOG</a>
+                </li>
                 <li class="menu-item">
                   <a href="{{ route("contact") }}">CONTACT US</a>
                 </li>

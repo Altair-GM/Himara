@@ -35,5 +35,9 @@ class FrontController extends Controller
   {
       return view("pages.elements.icons");
   }
+  public function blog()
+  {
+      return view("pages.elements.blog");
+  }
   
 }
