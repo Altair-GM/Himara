@@ -29,6 +29,12 @@
         </nav> --}}
         <nav id="header1" class="bg-gray-100 w-auto flex-1 border-b-1 border-gray-300 order-1 lg:order-2">
 
+            <div class="flex justify-center m-auto items-center h-full">
+                <a href="{{ route("home") }}">
+                    <img src="{{ asset($navLogo->url) }}" alt="Hotel Himara" >
+                </a>
+
+            </div>
             <div class="flex h-full justify-between items-center ">
 
                 <!--Menu-->

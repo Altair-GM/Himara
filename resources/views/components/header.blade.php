@@ -58,8 +58,8 @@
             <!-- BRAND -->
             <div class="brand">
               <div class="logo">
-                <a href="index.html">
-                  <img src="images/logo.svg" alt="Hotel Himara">
+                <a href="{{ route("home") }}">
+                  <img src="{{ asset($navLogo->url) }}" alt="Hotel Himara">
                 </a>
               </div>
             </div>
@@ -72,22 +72,22 @@
             <!-- MAIN MENU -->
             <nav id="main-menu" class="main-menu">
               <ul class="menu">
-                <li class="menu-item dropdown active">
+                <li class="menu-item dropdown @if(request()->is('/'))active @endif">
                   <a href="{{ route("home") }}">HOME</a>
                 </li>
-                <li class="menu-item dropdown">
+                <li class="menu-item dropdown @if(request()->is('rooms'))active @endif">
                   <a href="{{ route("rooms") }}">ROOMS</a>
                 </li>
-                <li class="menu-item dropdown">
+                <li class="menu-item dropdown @if(request()->is('team'))active @endif">
                   <a href="{{ route("team") }}">TEAM</a>
                 </li>
-                <li class="menu-item dropdown">
+                <li class="menu-item dropdown @if(request()->is('gallery'))active @endif">
                   <a href="{{ route("gallery") }}">GALLERY</a>
                 </li>
-                <li class="menu-item dropdown">
+                <li class="menu-item dropdown @if(request()->is('blog'))active @endif">
                   <a href="{{ route("blog") }}">BLOG</a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item dropdown @if(request()->is('contact'))active @endif">
                   <a href="{{ route("contact") }}">CONTACT US</a>
                 </li>
                 

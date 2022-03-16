@@ -57,6 +57,7 @@
     
     </head>
 <body  class="flex h-screen bg-gray-100 font-sans">
+    
     @include('admin.components.sideBar')
     @yield('admin')
     <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>

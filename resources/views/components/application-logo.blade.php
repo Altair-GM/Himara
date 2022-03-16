@@ -1,3 +1,3 @@
 <a href="{{ route("home") }}">
-    <img src="images/logo.svg" alt="Hotel Himara">
+    <img src="{{ asset($navLogo->url) }}" alt="Hotel Himara">
   </a>

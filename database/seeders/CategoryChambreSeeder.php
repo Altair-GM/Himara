@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CategoryChambreSeeder extends Seeder
 {
@@ -13,6 +14,19 @@ class CategoryChambreSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('categorie_chambres')->insert([
+            [
+                'nom' => 'SINGLE ROOM',
+            ],
+            [
+                'nom' => 'DOUBLE ROOM',
+            ],
+            [
+                'nom' => 'FAMILY ROOM',
+            ],
+            [
+                'nom' => 'DELUXE ROOM',
+            ],
+        ]);
     }
 }

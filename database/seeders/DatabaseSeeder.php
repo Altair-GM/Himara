@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\CategoryChambre;
+use App\Models\Chambre;
 use App\Models\Staff;
 use App\Models\Tag;
 use Illuminate\Database\Seeder;
@@ -28,6 +30,32 @@ class DatabaseSeeder extends Seeder
             CategoryArticlesSeeder::class,
             ArticleSeeder::class,
             TagSeeder::class,
+            CategoryChambreSeeder::class,
+            Chambre::class,
+            ContactSeeder::class,
+            CategoryImageSeeder::class,
+            ChambreTagSeeder::class,
+            TagArticleSeeder::class,
+            ServiceRoomSeeder::class,
+            StatutServiceSeeder::class,
+            ServiceSeeder::class,
+            ChambreSeeder::class,
+            ChambreServiceSeeder::class,
+            ImageSeeder::class,
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+           
+            
+            
+           
             
         ]);
     }
