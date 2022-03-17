@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\logo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class LogoController extends Controller
 {
@@ -57,7 +58,7 @@ class LogoController extends Controller
      */
     public function edit(logo $logo)
     {
-        //
+        return view('admin.logo.index', compact('logo'));
     }
 
     /**
@@ -69,7 +70,20 @@ class LogoController extends Controller
      */
     public function update(Request $request, logo $logo)
     {
-        //
+
+        $request->validate([
+            'image' => ['required', 'image']
+        ]);
+
+        if ($request->hasFile('image')) {
+            if (Storage::disk('public')->exists($logo->url)) {
+                Storage::disk('public')->delete($logo->url);
+            }
+            $image = Storage::disk('public')->put('', $request->image);
+            $logo->url = $image;
+        }
+        $logo->save();
+        return redirect()->route('logo.edit');
     }
 
     /**

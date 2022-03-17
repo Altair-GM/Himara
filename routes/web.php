@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 // {{{{{{{{{{{{{Vieuw Front}}}}}}}}}}}}}
 
-Route::get('/', function () { return view('pages.home');})->name("home");
+Route::get('/', [FrontController::class,"index"])->name("home");
 Route::get("/rooms",[FrontController::class,"rooms"])->name("rooms");
 Route::get("/team",[FrontController::class,"team"])->name("team");
 Route::get("/gallery",[FrontController::class,"gallery"])->name("gallery");

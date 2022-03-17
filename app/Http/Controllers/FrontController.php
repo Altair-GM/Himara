@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carousel;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
+
+    public function index(){
+        $carousels = Carousel::all();
+        return view('pages.home');
+    }
 
   public function rooms()
   {

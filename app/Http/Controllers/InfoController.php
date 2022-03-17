@@ -57,7 +57,7 @@ class InfoController extends Controller
      */
     public function edit(Info $info)
     {
-        //
+        return view('admin.info.edit', compact('info'));
     }
 
     /**
@@ -69,7 +69,21 @@ class InfoController extends Controller
      */
     public function update(Request $request, Info $info)
     {
-        //
+        $request->validate([
+            "email" => ['required'],
+            "adresse" => ['required'],
+            "phone" => ['required'],
+            "gsm" => ['required'],
+            "site" => ['required'],
+        ]);
+
+        $info->email = $request->email;
+        $info->adresse = $request->adresse;
+        $info->phone = $request->phone;
+        $info->gsm = $request->gsm;
+        $info->site = $request->site;
+        $info->save();
+        return redirect()->route('info.edit');
     }
 
     /**

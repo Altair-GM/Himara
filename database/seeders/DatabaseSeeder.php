@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             ArticleSeeder::class,
             TagSeeder::class,
             CategoryChambreSeeder::class,
-            Chambre::class,
+            ChambreSeeder::class,
             ContactSeeder::class,
             CategoryImageSeeder::class,
             ChambreTagSeeder::class,

@@ -14,7 +14,7 @@ class CategoryChambreSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categorie_chambres')->insert([
+        DB::table('category_chambres')->insert([
             [
                 'nom' => 'SINGLE ROOM',
             ],

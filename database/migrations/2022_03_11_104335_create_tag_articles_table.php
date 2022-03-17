@@ -17,8 +17,8 @@ class CreateTagArticlesTable extends Migration
             $table->id();
             $table->unsignedBigInteger("tag_id");
             $table->foreign("tag_id")->on("tags")->references("id");
-            $table->unsignedBigInteger("article_id");
-            $table->foreign("article_id")->on("articles")->references("id");
+            $table->unsignedBigInteger("articles_id");
+            $table->foreign("articles_id")->on("articles")->references("id");
             $table->timestamps();
         });
     }
