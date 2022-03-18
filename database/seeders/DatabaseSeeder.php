@@ -42,6 +42,7 @@ class DatabaseSeeder extends Seeder
             ChambreSeeder::class,
             ChambreServiceSeeder::class,
             ImageSeeder::class,
+            ReservationSeeder::class,
             
 
             
