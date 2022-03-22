@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class ImageController extends Controller
+class GalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $gallery = Image::all();
+        return view('admin.gallery.index', compact('gallery'));
     }
 
     /**
@@ -41,10 +44,10 @@ class ImageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Image  $image
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Image $image)
+    public function show($id)
     {
         //
     }
@@ -52,33 +55,45 @@ class ImageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Image  $image
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Image $image)
+    public function edit($id)
     {
-        //
+        return view('admin.gallery.edit', compact('gallery'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Image  $image
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Image $image)
+    public function update(Request $request,Image $gallery)
     {
-        //
+        $request->validate([
+            'image' => ['required', 'image']
+        ]);
+
+        if ($request->hasFile('image')) {
+            if (Storage::disk('public')->exists($gallery->url)) {
+                Storage::disk('public')->delete($gallery->url);
+            }
+            $image = Storage::disk('public')->put('', $request->image);
+            $gallery->url = $image;
+        }
+        $gallery->save();
+        return redirect()->route('gallery.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Image  $image
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy($id)
     {
         //
     }

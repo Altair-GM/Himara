@@ -21,7 +21,8 @@ class Articles extends Model
 
     public function category()
     {
-        return $this->hasMany(CategoryArticle::class, 'category_article_id');
+        // Car un article appartient à une seule catégorie
+        return $this->belongsTo(CategoryArticle::class, 'category_article_id');
     }
 
     public function comments(){

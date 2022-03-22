@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Articles;
 use App\Models\Carousel;
+use App\Models\CategoryArticles;
+use App\Models\TagArticle;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -41,9 +44,16 @@ class FrontController extends Controller
   {
       return view("pages.elements.icons");
   }
+  //   Blog Controller
   public function blog()
+ 
   {
-      return view("pages.elements.blog");
+      $blog = Articles::all();
+      $tag = TagArticle::all();
+      $categoryArticle = CategoryArticles::all();
+      $blogLast = Articles::latest()->take(3)->get();
+      return view("pages.elements.blog",compact("blog","tag","categoryArticle","blogLast"));
   }
   
+
 }

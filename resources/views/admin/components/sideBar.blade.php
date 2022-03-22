@@ -14,12 +14,17 @@
                 </a>
             </li>
             <li class="my-2 md:my-0">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                <a href="{{ route("admin.gallery") }}" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
                     <i class="fa fa-edit fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Gallery</span>
                 </a>
             </li>
             <li class="my-2 md:my-0">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                <a href="{{ route("caroussel") }}" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                    <i class="fas fa-edit fa-fw mr-3 text-indigo-400"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Caroussel</span>
+                </a>
+            </li>
+            <li class="my-2 md:my-0">
+                <a href="{{ route('admin.contact') }}" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
                     <i class="fas fa-edit fa-fw mr-3 text-indigo-400"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Contact</span>
                 </a>
             </li>

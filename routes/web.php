@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +29,10 @@ Route::get("/blog",[FrontController::class,"blog"])->name("blog");
 
 // {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{ Vieuw BackEnd}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}} 
 
+// [[[[[[[[[[[[Dashboard]]]]]]]]]]]]
+Route::get("/dashboard/caroussel",[CarouselController::class,"index"])->name("caroussel");
+Route::get("/dashboard/gallery",[GalleryController::class,"index"])->name("admin.gallery");
+Route::get("/dashboard/contact",[ContactController::class,"index"])->name("admin.contact");
 // [[[[[[[[[[[[Complements composants]]]]]]]]]]]]
 Route::get("/style-guide",[FrontController::class,"styleGuide"]);
 Route::get("/buttons",[FrontController::class,"buttons"]);

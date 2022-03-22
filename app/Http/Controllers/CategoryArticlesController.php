@@ -14,7 +14,8 @@ class CategoryArticlesController extends Controller
      */
     public function index()
     {
-        //
+        $categories = CategoryArticles::all();
+        return view('admin.articles.categories.index', compact('categories'));
     }
 
     /**
@@ -24,7 +25,7 @@ class CategoryArticlesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.articles.categories.create');
     }
 
     /**
@@ -35,7 +36,14 @@ class CategoryArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => ['required', 'unique:category_articles,nom']
+        ]);
+
+        $category = new CategoryArticles();
+        $category->nom = $request->nom;
+        $category->save();
+        return redirect()->route('category.article.index');
     }
 
     /**
@@ -57,7 +65,7 @@ class CategoryArticlesController extends Controller
      */
     public function edit(CategoryArticles $categoryArticles)
     {
-        //
+        return view('admin.articles.categories.edit', compact('categoryArticles'));
     }
 
     /**
@@ -69,7 +77,14 @@ class CategoryArticlesController extends Controller
      */
     public function update(Request $request, CategoryArticles $categoryArticles)
     {
-        //
+        $request->validate([
+            'nom' => ['required', 'unique:category_articles,nom,' . $categoryArticles->id]
+        ]);
+
+
+        $categoryArticles->nom = $request->nom;
+        $categoryArticles->save();
+        return redirect()->route('category.article.index');
     }
 
     /**
@@ -80,6 +95,7 @@ class CategoryArticlesController extends Controller
      */
     public function destroy(CategoryArticles $categoryArticles)
     {
-        //
+        $categoryArticles->delete();
+        return back();
     }
 }
