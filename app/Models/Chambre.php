@@ -13,6 +13,7 @@ class Chambre extends Model
     }
 
     public function tags(){
-        return $this->belongsToMany(TagChambre::class,'chambre_tags');
+        
+        return $this->belongsToMany(TagChambre::class,'chambre_tags', 'chambre_id');
     }
 }

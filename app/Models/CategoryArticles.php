@@ -9,6 +9,6 @@ class CategoryArticles extends Model
 {
     use HasFactory;
     public function articles(){
-        return $this->hasMany(Article::class, 'category_article_id');
+        return $this->hasMany(Articles::class, 'category_article_id');
     }
 }

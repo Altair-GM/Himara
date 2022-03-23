@@ -4,77 +4,81 @@
     @include('components.header')
     <!-- ========== PAGE TITLE ========== -->
     <div class="page-title gradient-overlay op6" style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
-                        background-size: cover;">
+                                              background-size: cover;">
         <div class="container">
             <div class="inner">
-                <h1>ROOMS</h1>
+                <h1>Blog</h1>
                 <ol class="breadcrumb">
                     <li>
                         <a href="index.html">Home</a>
                     </li>
-                    <li>Rooms</li>
+                    <li>Blog</li>
                 </ol>
             </div>
         </div>
     </div>
     <!-- ========== MAIN ========== -->
-    <main class="rooms-list-view">
+    <main>
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 col-12">
-                    @foreach ($roomListAll as $item)
-                        <!-- ITEM -->
-                        <div class="room-list-item">
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <figure class="gradient-overlay-hover link-icon">
-                                        <a href="room.html"><img src="{{ asset($item->img) }}" class="img-fluid"
-                                                alt="Image"></a>
-                                    </figure>
-                                    {{-- {{ asset("images/rooms/single/single1.jpg") }} --}}
-                                </div>
-                                <div class="col-lg-5">
-                                    <div class="room-info">
-                                        <h3 class="room-title">
-                                            <a href="room.html">{{ $item->nom }}</a>
-                                        </h3>
-                                        <span class="room-rates">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <a href="room.html#room-reviews">5.00 Based on 3 Ratings</a>
-                                        </span>
-                                        <p>{{ $item->description }}</p>
-                                        <div class="room-services">
-                                            <i class="fa fa-coffee" data-toggle="popover" data-placement="top"
-                                                data-trigger="hover" data-content="Breakfast Included"
-                                                data-original-title="Breakfast"></i>
-                                            <i class="fa fa-wifi" data-toggle="popover" data-placement="top"
-                                                data-trigger="hover" data-content="Free WiFi"
-                                                data-original-title="WiFi"></i>
-                                            <i class="fa fa-television" data-toggle="popover" data-placement="top"
-                                                data-trigger="hover" data-content="Plasma TV with cable channels"
-                                                data-original-title="TV"></i>
-                                            <span>Beds: 1 King</span>
-                                            <span>Max Guests: 2</span>
+                    <!-- POSTS -->
+                    <div class="blog-posts">
+
+                        @foreach ($blog as $article)
+                            <!-- POST -->
+                            <article class="post">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="post-thumbnail">
+                                            <figure class="gradient-overlay-hover link-icon">
+                                                <a href="">
+                                                    <img src="{{ asset($article->img) }}" class="img-fluid"
+                                                        alt="Image">
+                                                </a>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="post-details">
+                                            <h2 class="post-title">
+                                                <a href="blog-post.html">{{ $article->title }}</a>
+                                            </h2>
+                                            <div class="post-meta">
+                                                <span class="author">
+                                                    <a href="#"><img src="images/users/admin.jpg" width="16"
+                                                            alt="Image">{{ $article->author->nom }}</a>
+                                                </span>
+                                                <span class="date">
+                                                    <a href="#">
+                                                        <i class="fa fa-clock-o"></i>{{ $article->created_at }}</a>
+                                                </span>
+                                                <span class="comments">
+                                                    <a href="#">
+                                                        <i class="fa fa-commenting-o"></i>1 Comment</a>
+                                                </span>
+                                                <span class="category">
+                                                    <i class="fa fa-folder-open-o"></i>IN
+                                                    @foreach ($article->tags as $item)
+                                                        @if ($loop->last)
+                                                            <a
+                                                                href="{{ route('article.tagCategorie', $item->id) }}">{{ $item->nom }}</a>
+                                                        @else
+                                                            <a
+                                                                href="{{ route('article.tagCategorie', $item->id) }}">{{ $item->nom }}</a>,
+                                                        @endif
+                                                    @endforeach
+                                                </span>
+                                            </div>
+                                            <p>{{ $article->description }}</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
-                                    <div class="room-price">
-                                        <span class="price">{{ $item->prix }}</span>
-                                        <a href="room.html" class="btn btn-sm">view <br> details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                            </article>
+                        @endforeach
 
-
-
-                    <!-- PAGINATION -->
+                    </div>
+                    <!-- ========== PAGINATION ========== -->
                     <nav class="pagination">
                         <ul>
                             <li class="prev-pagination">
@@ -91,15 +95,21 @@
                             <li>
                                 <a href="#">3</a>
                             </li>
+                            <li>
+                                <a href="#">4</a>
+                            </li>
+                            <li>
+                                <a href="#">5</a>
+                            </li>
                             <li>...</li>
                             <li>
-                                <a href="#">7</a>
+                                <a href="#">18</a>
                             </li>
                             <li>
-                                <a href="#">8</a>
+                                <a href="#">19</a>
                             </li>
                             <li>
-                                <a href="#">9</a>
+                                <a href="#">20</a>
                             </li>
                             <li class="next_pagination">
                                 <a href="#">
@@ -111,19 +121,16 @@
                         </ul>
                     </nav>
                 </div>
+                <!-- SIDEBAR -->
                 <div class="col-lg-3 col-12">
                     <div class="sidebar">
                         <aside class="widget noborder">
                             <div class="search">
-                                <form action="{{ route('RoomSearch') }}" class="widget-search" method="POST">
+                                <form class="widget-search" method="POST" action="{{ route('article.search') }}">
                                     @csrf
-                                    <input type="search" placeholder="Search" onfocus="this.placeholder='' "
-                                        onblur="this.placeholder='Search'" name="data">
+                                    <input type="search" placeholder="Search" name="data">
                                     <button class="btn-search" id="searchsubmit" type="submit">
-                                        <button class="btn-search" id="searchsubmit" type="submit">
-
-                                            <i class="fa fa-search"></i>
-                                        </button>
+                                        <i class="fa fa-search"></i>
                                     </button>
                                 </form>
                             </div>
@@ -132,11 +139,10 @@
                         <aside class="widget">
                             <h4 class="widget-title">CATEGORIES</h4>
                             <ul class="categories">
-                                @foreach ($categoryRoom as $item)
+                                @foreach ($categorieArticle as $categorie)
                                     <li>
-                                        {{-- <a href="#">Single Room<span class="posts-num">51</span></a> --}}
-                                        <a href={{ route('roomCategorie', $item->id) }}>{{ $item->nom }}<span
-                                                class="posts-num">{{ count($item->rooms) }}</span></a>
+                                        <a href="{{ route('article.categorie', $categorie->id) }}">{{ $categorie->nom }}<span
+                                                class="posts-num">{{ count($categorie->articles) }}</span></a>
                                     </li>
                                 @endforeach
 
@@ -144,14 +150,42 @@
                         </aside>
                         <!-- WIDGET -->
                         <aside class="widget">
+                            <h4 class="widget-title">Latest Posts</h4>
+                            <div class="latest-posts">
+                                @foreach ($blogLast as $item)
+                                    <!-- ITEM -->
+                                    <div class="latest-post-item">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <figure class="gradient-overlay-hover link-icon sm">
+                                                    <a href="blog-post.html">
+                                                        <img src="{{ asset($item->img) }}" class="img-fluid"
+                                                            alt="Image">
+                                                    </a>
+                                                </figure>
+                                            </div>
+                                            <div class="col-7">
+                                                <div class="post-details">
+                                                    <h6 class="post-title">
+                                                        <a href="blog-post.html">{{ $item->title }}</a>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        </aside>
+                        <!-- WIDGET -->
+                        <aside class="widget">
                             <h4 class="widget-title">Tags</h4>
                             <div class="tagcloud">
-                                {{-- @dd($tagRoom) --}}
-                                @foreach ($tagRoom as $item)
-                                    <a href={{ route('tagRooms', $item->id) }}>
-                                        <span class="tag">{{ $item->nom }}</span>
-                                    </a>
+                                @foreach ($tag as $item)
+                                    <a href="{{ route('article.tagCategorie', $item->id) }}">
+                                        <span class="tag">{{ $item->nom }}</span></a>
                                 @endforeach
+
                             </div>
                         </aside>
                     </div>
@@ -159,8 +193,6 @@
             </div>
         </div>
     </main>
-    </div>
-
     <!-- ========== FOOTER ========== -->
     <footer>
         <div class="footer-widgets">
@@ -169,15 +201,14 @@
                     <!-- WIDGET -->
                     <div class="col-md-3">
                         <div class="footer-widget">
-                            <img src="{{ asset('images/logo.svg') }}" class="footer-logo" alt="Hotel Himara">
+                            <img src="images/logo.svg" class="footer-logo" alt="Hotel Himara">
                             <div class="inner">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, velit placeat assumenda
-                                    incidunt
-                                    dolorem aliquam!</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, velit placeat
+                                    assumenda incidunt dolorem aliquam!</p>
                                 <a href="https://www.tripadvisor.com/" target="_blank">
                                     <div class="tripadvisor-banner">
                                         <span class="review">Recommended</span>
-                                        <img src="{{ asset('images/icons/tripadvisor.png') }}" alt="Image">
+                                        <img src="images/icons/tripadvisor.png" alt="Image">
                                     </div>
                                 </a>
                             </div>
@@ -306,8 +337,7 @@
         </div>
     </footer>
     </div>
-    <!-- ========== CONTACT NOTIFICATION ========== -->
-    <div id="contact-notification" class="notification fixed"></div>
+    <div class="notification"></div>
     <!-- ========== BACK TO TOP ========== -->
     <div class="back-to-top">
         <i class="fa fa-angle-up" aria-hidden="true"></i>
