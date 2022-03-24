@@ -70,7 +70,9 @@
                                                     @endforeach
                                                 </span>
                                             </div>
-                                            <p>{{ $article->description }}</p>
+                                            {{-- <p>{{ $article->description }}</p> --}}
+                                            <p> {{ Str::limit($article->description, 200) }}</p>
+                                           
                                         </div>
                                     </div>
                                 </div>

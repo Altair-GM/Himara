@@ -10,6 +10,7 @@ use App\Models\CategoryImage;
 use App\Models\Chambre;
 use App\Models\Comment;
 use App\Models\Image;
+use App\Models\Info;
 use App\Models\Service;
 use App\Models\Staff;
 use App\Models\Tag;
@@ -81,7 +82,8 @@ class FrontController extends Controller
     }
     public function contact()
     {
-        return view('contact');
+        $infos = Info::first();
+        return view('pages.contact',compact("infos"));
     }
     public function event_details()
     {

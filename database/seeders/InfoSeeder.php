@@ -16,7 +16,7 @@ class InfoSeeder extends Seeder
     {
         DB::table('infos')->insert([
             'email'=>'himara@info.com',
-            'adresse' => "Lorem ipsum dolor, 25, Himara",
+            'adresse' => "Place de la Minoterie 10",
             'phone' => 8881234567,
             'gsm' => 8881234567,
             'site' => "www.hotelhimara.com",

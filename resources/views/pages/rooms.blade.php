@@ -46,7 +46,8 @@
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <a href="room.html#room-reviews">5.00 Based on 3 Ratings</a>
                                         </span>
-                                        <p>{{ $item->description }}</p>
+                                        <p> {{ Str::limit($item->description, 200) }}</p>
+
                                         <div class="room-services">
                                             <i class="fa fa-coffee" data-toggle="popover" data-placement="top"
                                                 data-trigger="hover" data-content="Breakfast Included"

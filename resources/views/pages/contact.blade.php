@@ -55,14 +55,17 @@
                <div class="toggle-streetview" id="openStreetView">
                  <i class="fa fa-street-view" aria-hidden="true"></i>
                </div>
-               <div id="map-canvas"></div>
+               {{-- <div id="map-canvas"></div> --}}
+               <iframe class="rounded-circle" width='100%' height='340' frameborder='0' scrolling='no' marginheight='0'
+               marginwidth='0'
+               src='https://maps.google.com/maps?&amp;q="{{ $infos->adresse }}"&amp;output=embed'></iframe>
              </div>
              <div class="contact-details mt75">
                <div class="contact-info">
                  <ul>
                    <li>
                      <a href="#">
-                       <i class="fa fa-map-marker"></i>Lorem ipsum dolor, 25, Himara</a>
+                       <i class="fa fa-map-marker"></i>{{ $infos->adresse }}</a>
                    </li>
                    <li>
                      <a href="#">
