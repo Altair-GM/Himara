@@ -37,7 +37,7 @@
             <div class="gallery-item filter-swimmingpool col-md-3">
               <figure class="gradient-overlay image-icon">
                 <a href="{{ asset("images/gallery/" . $item->url) }}">
-                  <img src="images/gallery/gallery1.jpg" class="img-fluid" alt="Image">
+                  <img src="{{ asset("images/gallery/" . $item->url) }}" class="img-fluid" alt="Image">
                 </a>
                 <figcaption>{{ $item->nom }}</figcaption>
               </figure>

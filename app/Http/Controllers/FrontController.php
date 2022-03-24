@@ -22,8 +22,9 @@ class FrontController extends Controller
     public function home()
     {
         $serviceAll = Service::all();
+        $imageAll = Image::all();
 
-        return view("pages.home", compact("serviceAll"));
+        return view("pages.home", compact("serviceAll","imageAll"));
     }
 
     // Page pr afficher tous les articles
@@ -107,7 +108,9 @@ class FrontController extends Controller
     }
     public function index()
     {
-        return view('pages.home');
+        $imageAll = Image::all();
+
+        return view('pages.home',compact("imageAll"));
     }
     public function loading()
     {

@@ -472,16 +472,21 @@
           <a href={{ route("gallery") }} class="view-all">View gallery images</a>
         </div>
         <div class="gallery-owl owl-carousel image-gallery">
-          <!-- ITEM -->
+          @foreach ($imageAll->shuffle()->take(5) as $item)
+              <!-- ITEM -->
           <div class="gallery-item">
             <figure class="gradient-overlay image-icon">
-              <a href="images/gallery/gallery1.jpg">
-                <img src="images/gallery/gallery1.jpg" alt="Image">
+              <a href="{{ asset("images/gallery/" . $item->url) }}">
+                {{-- <a href="{{ asset("images/gallery/gallery1.jpg") }}"> --}}
+                {{-- <img src="images/gallery/gallery1.jpg" alt="Image"> --}}
+                <img src="{{ asset("images/gallery/" . $item->url) }}" alt="Image">
               </a>
-              <figcaption>Swimming Pool</figcaption>
+              <figcaption>{{ $item->nom }}</figcaption>
             </figure>
           </div>
-          <!-- ITEM -->
+          @endforeach
+          
+          {{-- <!-- ITEM -->
           <div class="gallery-item">
             <figure class="gradient-overlay image-icon">
               <a href="images/gallery/gallery2.jpg">
@@ -561,7 +566,7 @@
               </a>
               <figcaption>Sea</figcaption>
             </figure>
-          </div>
+          </div> --}}
         </div>
       </div>
     </section>
