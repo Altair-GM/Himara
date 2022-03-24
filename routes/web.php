@@ -68,6 +68,12 @@ Route::post("/dashboard/chambres/store", [ChambreController::class, "store"])->n
 Route::get("/dashboard/chambres/edit/{id}", [ChambreController::class, "edit"])->name("admin.chambres.edit");
 Route::put("/dashboard/chambres/edit/{id}", [ChambreController::class, "udpate"])->name("admin.chambres.update");
 Route::delete("/dashboard/chambres/delete/{id}", [ChambreController::class, "destroy"])->name("admin.chambres.delete");
+// {{ Gallery }}
+Route::get("/dashboard/gallery/create", [GalleryController::class, "create"])->name("admin.gallery.create");
+Route::post("/dashboard/gallery/store", [GalleryController::class, "store"])->name("admin.gallery.store");
+Route::get("/dashboard/gallery/edit/{id}", [GalleryController::class, "edit"])->name("admin.gallery.edit");
+Route::put("/dashboard/gallery/edit/{id}", [GalleryController::class, "udpate"])->name("admin.gallery.update");
+Route::delete("/dashboard/gallery/delete/{id}", [GalleryController::class, "destroy"])->name("admin.gallery.delete");
 
 // {{ Carousel }}
 

@@ -32,16 +32,19 @@
         <!-- GALLERY -->
         <div class="container">
           <div class="grid image-gallery row">
+            @foreach ($imageAll as $item)
             <!-- ITEM -->
             <div class="gallery-item filter-swimmingpool col-md-3">
               <figure class="gradient-overlay image-icon">
-                <a href="images/gallery/gallery1.jpg">
+                <a href="{{ asset("images/gallery/" . $item->url) }}">
                   <img src="images/gallery/gallery1.jpg" class="img-fluid" alt="Image">
                 </a>
-                <figcaption>Swimming Pool</figcaption>
+                <figcaption>{{ $item->nom }}</figcaption>
               </figure>
             </div>
-            <!-- ITEM -->
+                
+            @endforeach
+            {{-- <!-- ITEM -->
             <div class="gallery-item filter-roomview col-md-3">
               <figure class="gradient-overlay image-icon">
                 <a href="images/gallery/gallery2.jpg">
@@ -175,7 +178,7 @@
                 </a>
                 <figcaption>Room View</figcaption>
               </figure>
-            </div>
+            </div> --}}
           </div>
         </div>
       </main>

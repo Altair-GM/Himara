@@ -47,7 +47,7 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Image $gallery)
     {
         //
     }
@@ -58,7 +58,7 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Image $gallery)
     {
         return view('admin.gallery.edit', compact('gallery'));
     }

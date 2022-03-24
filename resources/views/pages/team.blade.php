@@ -21,21 +21,25 @@
       <main class="location-page">
         <div class="container">
           <div class="row">
+            @foreach ($team as $item)
+                
             <!-- ITEM -->
             <div class="col-lg-3 col-md-6">
               <div class="staff-item">
                 <figure>
-                  <img src="images/staff/staff1.jpg" class="img-fluid" alt="Image">
-                  <div class="position">Housekeeper</div>
+                  <img src="{{  asset($item->img)}}" class="img-fluid" alt="Image">
+                  <div class="position">{{ $item->fonction->nom }}</div>
+                  <figcaption>{{ $item->nom }}</figcaption>
                 </figure>
                 <div class="details">
-                  <h5>Jeanette Owens</h5>
-                  <p>Lorem Ipsum which looks many web sites pass websites is therefore always.</p>
+                  <h5>{{ $item->nom }} {{ $item->prenom }}</h5>
+                  <p>{{ $item->description }}</p>
                 </div>
               </div>
             </div>
+            @endforeach
             <!-- ITEM -->
-            <div class="col-lg-3 col-md-6">
+            {{-- <div class="col-lg-3 col-md-6">
               <div class="staff-item">
                 <figure>
                   <img src="images/staff/staff2.jpg" class="img-fluid" alt="Image">
@@ -124,7 +128,7 @@
                   <p>Lorem Ipsum which looks many web sites pass websites is therefore always.</p>
                 </div>
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
       </main>
