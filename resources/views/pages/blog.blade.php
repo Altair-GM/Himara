@@ -32,7 +32,7 @@
                                     <div class="col-sm-4">
                                         <div class="post-thumbnail">
                                             <figure class="gradient-overlay-hover link-icon">
-                                                <a href="">
+                                                <a href="{{ route("blog.show", $article->id) }}">
                                                     <img src="{{ asset($article->img) }}" class="img-fluid"
                                                         alt="Image">
                                                 </a>
@@ -42,7 +42,7 @@
                                     <div class="col-sm-8">
                                         <div class="post-details">
                                             <h2 class="post-title">
-                                                <a href="blog-post.html">{{ $article->title }}</a>
+                                                <a href="{{ route("blog.show", $article->id) }}">{{ $article->title }}</a>
                                             </h2>
                                             <div class="post-meta">
                                                 <span class="author">
@@ -81,47 +81,7 @@
 
                     </div>
                     <!-- ========== PAGINATION ========== -->
-                    <nav class="pagination">
-                        <ul>
-                            <li class="prev-pagination">
-                                <a href="#">
-                                    &nbsp;<i class="fa fa-angle-left"></i>
-                                    Previous &nbsp;</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">5</a>
-                            </li>
-                            <li>...</li>
-                            <li>
-                                <a href="#">18</a>
-                            </li>
-                            <li>
-                                <a href="#">19</a>
-                            </li>
-                            <li>
-                                <a href="#">20</a>
-                            </li>
-                            <li class="next_pagination">
-                                <a href="#">
-                                    &nbsp; Next
-                                    <i class="fa fa-angle-right"></i>
-                                    &nbsp;
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    {{ $blog->links('pagination::bootstrap-4') }}
                 </div>
                 <!-- SIDEBAR -->
                 <div class="col-lg-3 col-12">
@@ -160,7 +120,7 @@
                                         <div class="row">
                                             <div class="col-5">
                                                 <figure class="gradient-overlay-hover link-icon sm">
-                                                    <a href="blog-post.html">
+                                                    <a href="{{ route("blog.show", $item->id) }}">
                                                         <img src="{{ asset($item->img) }}" class="img-fluid"
                                                             alt="Image">
                                                     </a>
@@ -169,7 +129,7 @@
                                             <div class="col-7">
                                                 <div class="post-details">
                                                     <h6 class="post-title">
-                                                        <a href="blog-post.html">{{ $item->title }}</a>
+                                                        <a href="{{ route("blog.show", $item->id) }}">{{ $item->title }}</a>
                                                     </h6>
                                                 </div>
                                             </div>
@@ -222,21 +182,24 @@
                             <h3>LATEST NEWS</h3>
                             <div class="inner">
                                 <ul class="latest-posts">
+                                    @foreach ($blogLast as $item)
+                                        
                                     <li>
-                                        <a href="blog-post.html">10 Tips for holiday travel</a>
+                                        <a href="{{ route("blog.show", $item->id) }}">10 Tips for holiday travel</a>
+                                    </li>
+                                    @endforeach
+                                    {{-- <li>
+                                        <a href="{{ route("blog.show", $artic->id) }}">Are you ready to enjoy your holidays</a>
                                     </li>
                                     <li>
-                                        <a href="blog-post.html">Are you ready to enjoy your holidays</a>
+                                        <a href="{{ route("blog.show", $artic->id) }}">Honeymoon at Hotel Himara</a>
                                     </li>
                                     <li>
-                                        <a href="blog-post.html">Honeymoon at Hotel Himara</a>
+                                        <a href="{{ route("blog.show", $artic->id) }}">Travel gift ideas for every type of traveler</a>
                                     </li>
                                     <li>
-                                        <a href="blog-post.html">Travel gift ideas for every type of traveler</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-post.html">Breakfast with coffee and orange juice</a>
-                                    </li>
+                                        <a href="{{ route("blog.show", $artic->id) }}">Breakfast with coffee and orange juice</a>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>

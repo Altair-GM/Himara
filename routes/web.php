@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 // {{{{{{{{{{{{{Vieuw Front}}}}}}}}}}}}}
 // Route::get('/', [FrontController::class,'home'])->name('home');
 Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
+Route::get('/blog/{id}', [FrontController::class, 'blogPost'])->name('blog.show');
 Route::post('/blog/search', [FrontController::class, 'search'])->name('article.search');
 Route::get('/blog/search/tag/{id}', [FrontController::class, 'tagCategorie'])->name('article.tagCategorie');
 Route::get('/blog/search/categorie/{id}', [FrontController::class, 'searchCategorie'])->name('article.categorie');
@@ -37,7 +38,7 @@ Route::get('/loading', [FrontController::class, 'loading']);
 Route::get('/page', [FrontController::class, 'page']);
 Route::get('/rooms/list', [FrontController::class, 'roomlist'])->name('rooms');
 Route::post('/rooms/search', [FrontController::class, 'search'])->name('RoomSearch');
-Route::get('/room/{id}', [FrontController::class, 'room']);
+Route::get('/room/{id}', [FrontController::class, 'room'])->name('room.show');
 Route::get('/rooms/search/{id}/categorie', [FrontController::class, 'searchRoomCategorie'])->name('roomCategorie');
 Route::get('/rooms/search/{id}/tags', [FrontController::class, 'tagRooms'])->name('tagRooms');
 Route::get('/staff', [FrontController::class, 'staff'])->name('team');

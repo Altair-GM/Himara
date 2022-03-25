@@ -4,7 +4,7 @@
     @include('components.header')
     <!-- ========== PAGE TITLE ========== -->
     <div class="page-title gradient-overlay op6" style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
-                        background-size: cover;">
+                            background-size: cover;">
         <div class="container">
             <div class="inner">
                 <h1>ROOMS</h1>
@@ -28,15 +28,15 @@
                             <div class="row">
                                 <div class="col-lg-5">
                                     <figure class="gradient-overlay-hover link-icon">
-                                        <a href="room.html"><img src="{{ asset($item->img) }}" class="img-fluid"
-                                                alt="Image"></a>
+                                        <a href="{{ route('room.show', $item->id) }}"><img
+                                                src="{{ asset($item->image) }}" class="img-fluid" alt="Image"></a>
                                     </figure>
                                     {{-- {{ asset("images/rooms/single/single1.jpg") }} --}}
                                 </div>
                                 <div class="col-lg-5">
                                     <div class="room-info">
                                         <h3 class="room-title">
-                                            <a href="room.html">{{ $item->nom }}</a>
+                                            <a href="{{ route('room.show', $item->id) }}">{{ $item->nom }}</a>
                                         </h3>
                                         <span class="room-rates">
                                             <i class="fa fa-star" aria-hidden="true"></i>
@@ -44,7 +44,8 @@
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
-                                            <a href="room.html#room-reviews">5.00 Based on 3 Ratings</a>
+                                            <a href="{{ route('room.show', $item->id) }}#room-reviews">5.00 Based on 3
+                                                Ratings</a>
                                         </span>
                                         <p> {{ Str::limit($item->description, 200) }}</p>
 
@@ -66,7 +67,8 @@
                                 <div class="col-lg-2">
                                     <div class="room-price">
                                         <span class="price">{{ $item->prix }}</span>
-                                        <a href="room.html" class="btn btn-sm">view <br> details</a>
+                                        <a href="{{ route('room.show', $item->id) }}" class="btn btn-sm">view <br>
+                                            details</a>
                                     </div>
                                 </div>
                             </div>
@@ -76,41 +78,7 @@
 
 
                     <!-- PAGINATION -->
-                    <nav class="pagination">
-                        <ul>
-                            <li class="prev-pagination">
-                                <a href="#">
-                                    &nbsp;<i class="fa fa-angle-left"></i>
-                                    Previous &nbsp;</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>...</li>
-                            <li>
-                                <a href="#">7</a>
-                            </li>
-                            <li>
-                                <a href="#">8</a>
-                            </li>
-                            <li>
-                                <a href="#">9</a>
-                            </li>
-                            <li class="next_pagination">
-                                <a href="#">
-                                    &nbsp; Next
-                                    <i class="fa fa-angle-right"></i>
-                                    &nbsp;
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    {{ $roomListAll->links("pagination::bootstrap-4") }}
                 </div>
                 <div class="col-lg-3 col-12">
                     <div class="sidebar">

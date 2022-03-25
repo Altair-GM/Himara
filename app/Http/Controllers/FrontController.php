@@ -24,14 +24,14 @@ class FrontController extends Controller
         $serviceAll = Service::all();
         $imageAll = Image::all();
 
-        return view("pages.home", compact("serviceAll","imageAll"));
+        return view("pages.home", compact("serviceAll", "imageAll"));
     }
 
     // Page pr afficher tous les articles
 
     public function blog()
     {
-        $blog = Articles::all();
+        $blog = Articles::paginate(3);
         $tag = Tag::all();
         $categorieArticle = CategoryArticles::all();
         $blogLast = Articles::latest()->take(3)->get();
@@ -43,7 +43,7 @@ class FrontController extends Controller
 
         $data = $request->data;
         $blog = Articles::where('title', 'like', "%$data%")
-            ->get();
+            ->paginate(3);
         $tag = Tag::all();
         $categorieArticle = CategoryArticles::all();
         $blogLast = Articles::latest()->take(3)->get();
@@ -55,7 +55,7 @@ class FrontController extends Controller
     {
 
         $tagiD = Tag::find($id);
-        $blog = $tagiD->articles;
+        $blog = $tagiD->articles()->paginate(3);
         $tag = Tag::all();
         $categorieArticle = CategoryArticles::all();
         $blogLast = Articles::latest()->take(3)->get();
@@ -66,7 +66,7 @@ class FrontController extends Controller
     public function searchCategorie($id)
     {
         $categoryId = CategoryArticles::find($id);
-        $blog = $categoryId->articles;
+        $blog = $categoryId->articles()->paginate(3);
         $tag = Tag::all();
         $categorieArticle = CategoryArticles::all();
         $blogLast = Articles::latest()->take(3)->get();
@@ -84,7 +84,7 @@ class FrontController extends Controller
     public function contact()
     {
         $infos = Info::first();
-        return view('pages.contact',compact("infos"));
+        return view('pages.contact', compact("infos"));
     }
     public function event_details()
     {
@@ -99,8 +99,8 @@ class FrontController extends Controller
     public function gallery()
     {
         $imageAll = Image::all();
-        $categorieArticle = CategoryImage::all();
-        return view('pages.gallery', compact("imageAll", "categorieArticle"));
+        $categories = CategoryImage::all();
+        return view('pages.gallery', compact("imageAll", "categories"));
     }
     public function icons()
     {
@@ -110,7 +110,7 @@ class FrontController extends Controller
     {
         $imageAll = Image::all();
 
-        return view('pages.home',compact("imageAll"));
+        return view('pages.home', compact("imageAll"));
     }
     public function loading()
     {
@@ -124,7 +124,7 @@ class FrontController extends Controller
     // Page qui permet de récupérer toutes les chambres
     public function roomlist()
     {
-        $roomListAll = Chambre::all();
+        $roomListAll = Chambre::paginate(3);
         $tagRoom = TagChambres::all();
         $categoryRoom = CategoryChambre::all();
         return view('pages.rooms', compact("roomListAll", "tagRoom", "categoryRoom"));
@@ -147,7 +147,7 @@ class FrontController extends Controller
         $roomListAll = Chambre::all();
 
         $tagRoomsiD = TagChambres::find($id);
-        $roomListAll = $tagRoomsiD->rooms;
+        $roomListAll = $tagRoomsiD->rooms()->paginate(3);
         // dd(count($room));
         $tagRoom = TagChambres::all();
         // $categoryRoom = categorieRoom::all();
@@ -167,7 +167,7 @@ class FrontController extends Controller
         return view('pages.team', compact("team", "houseKeeper"));
     }
 
-    
+
 
 
 
@@ -175,7 +175,7 @@ class FrontController extends Controller
     public function searchRoomCategorie($id)
     {
 
-        $roomListAll = Chambre::where("categorie_chambre_id", $id)->get();
+        $roomListAll = Chambre::where("category_chambre_id", $id)->paginate(3);
         $categoryRoom = CategoryChambre::all();
         // dd($categoryRoomArticle);
 
@@ -191,7 +191,7 @@ class FrontController extends Controller
 
         $data = $request->data;
         $roomListAll = Chambre::where('titre', 'like', "%$data%")
-            ->get();
+            ->paginate(3);
         $categoryRoom = CategoryChambre::all();
         $tagRoom = TagChambres::all();
 
@@ -206,7 +206,11 @@ class FrontController extends Controller
         $blog = Articles::find($id);
         // dd($projetTout);
         $comment = Comment::all();
+        $categories = CategoryArticles::all();
+        $tags = Tag::all();
 
-        return view("pages.blogpost", compact("blog", "comment"));
+        $latest = Articles::latest()->where('id', '!=',$id)->take(5)->get();
+
+        return view("pages.blogpost", compact("blog", "comment", 'categories', 'tags', 'latest'));
     }
 }

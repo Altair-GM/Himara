@@ -7,9 +7,9 @@
  background-size: cover;">
      <div class="container">
        <div class="inner">
-         <h1>ISTANBUL</h1>
+         <h1>{{ $room->nom }}</h1>
          <div class="room-details-price">
-           €89 / NIGHT
+           €{{ $room->prix }} / NIGHT
          </div>
          <ol class="breadcrumb">
            <li>
@@ -18,7 +18,7 @@
            <li>
              <a href="index.html">Rooms</a>
            </li>
-           <li>Istanbul</li>
+           <li>{{ $room->nom }}</li>
          </ol>
        </div>
      </div>
@@ -34,107 +34,29 @@
                <!-- ITEM -->
                <div class="item">
                  <figure class="gradient-overlay-hover image-icon">
-                   <a href="images/rooms/single/single1.jpg">
-                     <img class="img-fluid" src="images/rooms/single/single1.jpg" alt="Image">
+                   <a href="{{ asset($room->image) }}">
+                     <img class="img-fluid" src="{{ asset($room->image) }}" alt="Image">
                    </a>
                  </figure>
                </div>
-               <!-- ITEM -->
-               <div class="item">
-                 <figure class="gradient-overlay-hover image-icon">
-                   <a href="images/rooms/single/single2.jpg">
-                     <img class="img-fluid" src="images/rooms/single/single2.jpg" alt="Image">
-                   </a>
-                 </figure>
-               </div>
-               <!-- ITEM -->
-               <div class="item">
-                 <figure class="gradient-overlay-hover image-icon">
-                   <a href="images/rooms/single/single3.jpg">
-                     <img class="img-fluid" src="images/rooms/single/single3.jpg" alt="Image">
-                   </a>
-                 </figure>
-               </div>
-               <!-- ITEM -->
-               <div class="item">
-                 <figure class="gradient-overlay-hover image-icon">
-                   <a href="images/rooms/single/single4.jpg">
-                     <img class="img-fluid" src="images/rooms/single/single4.jpg" alt="Image">
-                   </a>
-                 </figure>
-               </div>
-               <!-- ITEM -->
-               <div class="item">
-                 <figure class="gradient-overlay-hover image-icon">
-                   <a href="images/rooms/single/single5.jpg">
-                     <img class="img-fluid" src="images/rooms/single/single5.jpg" alt="Image">
-                   </a>
-                 </figure>
-               </div>
-               <!-- ITEM -->
-               <div class="item">
-                 <figure class="gradient-overlay-hover image-icon">
-                   <a href="images/rooms/single/single6.jpg">
-                     <img class="img-fluid" src="images/rooms/single/single6.jpg" alt="Image">
-                   </a>
-                 </figure>
-               </div>
-               <!-- ITEM -->
-               <div class="item">
-                 <figure class="gradient-overlay-hover image-icon">
-                   <a href="images/rooms/single/single7.jpg">
-                     <img class="img-fluid" src="images/rooms/single/single7.jpg" alt="Image">
-                   </a>
-                 </figure>
-               </div>
-               <!-- ITEM -->
-               <div class="item">
-                 <figure class="gradient-overlay-hover image-icon">
-                   <a href="images/rooms/single/single8.jpg">
-                     <img class="img-fluid" src="images/rooms/single/single8.jpg" alt="Image">
-                   </a>
-                 </figure>
-               </div>
+              
              </div>
              <div id="room-thumbs" class="room-thumbs owl-carousel">
                <!-- ITEM -->
-               <div class="item"><img class="img-fluid" src="images/rooms/single/single1.jpg" alt="Image"></div>
-               <!-- ITEM -->
-               <div class="item"><img class="img-fluid" src="images/rooms/single/single2.jpg" alt="Image"></div>
-               <!-- ITEM -->
-               <div class="item"><img class="img-fluid" src="images/rooms/single/single3.jpg" alt="Image"></div>
-               <!-- ITEM -->
-               <div class="item"><img class="img-fluid" src="images/rooms/single/single4.jpg" alt="Image"></div>
-               <!-- ITEM -->
-               <div class="item"><img class="img-fluid" src="images/rooms/single/single5.jpg" alt="Image"></div>
-               <!-- ITEM -->
-               <div class="item"><img class="img-fluid" src="images/rooms/single/single6.jpg" alt="Image"></div>
-               <!-- ITEM -->
-               <div class="item"><img class="img-fluid" src="images/rooms/single/single7.jpg" alt="Image"></div>
-               <!-- ITEM -->
-               <div class="item"><img class="img-fluid" src="images/rooms/single/single8.jpg" alt="Image"></div>
+               <div class="item"><img class="img-fluid" src="{{ asset($room->image) }}" alt="Image"></div>
+               
              </div>
            </div>
-           <p class="dropcap">Horem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-             nisl ut aliquip ex ea
-             <u>commodo consequat.</u>
-             Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit...</p>
-           <p>
-             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam ut, asperiores voluptatibus quo rem iusto laborum, laudantium corrupti ea esse officia placeat beatae! Ducimus quasi nisi odio architecto repudiandae illo sunt nulla quia obcaecati
-             blanditiis? Doloremque commodi deserunt corporis, maiores, quam ipsam voluptates beatae necessitatibus, sapiente impedit sunt cupiditate odio, officiis quo debitis distinctio! Tenetur quibusdam modi adipisci vel ullam cum ratione itaque laborum
-             molestias nesciunt. Qui itaque saepe obcaecati quo tempora natus laudantium quidem, inventore totam. Nobis incidunt est doloribus qui vero expedita a fugit necessitatibus minus sapiente illo, commodi laudantium minima quo deserunt odio repellat
-             placeat quas, perferendis, voluptates! Omnis corporis nostrum optio reprehenderit aspernatur consequuntur, nisi rerum. Architecto provident alias voluptatem aliquam tenetur eius eos. Iure, earum. Asperiores consectetur, dolorem animi pariatur. Magni
-             necessitatibus non hic odit nesciunt voluptatum distinctio provident, repellendus quae dolores, assumenda delectus quisquam fuga velit natus cumque. Odio sint deserunt ex dolorem, culpa, sit accusantium nesciunt. Dicta, nulla aperiam expedita nihil
-             at laborum! Minima ducimus, nobis quasi minus totam ab quo, quia labore nihil praesentium doloremque recusandae! Voluptas delectus distinctio architecto aliquid eligendi nostrum odio a culpa modi cumque mollitia id, consequuntur, labore, ut minima
-             illum. Repellendus cumque veniam quae odit enim.
-           </p>
+           <p class="dropcap">{{ $room->description }}</p>
+           
            <div class="section-title sm">
              <h4>ROOM SERVICES</h4>
-             <p class="section-subtitle">Istanbul Includes</p>
+             <p class="section-subtitle">{{ $room->nom }} Includes</p>
            </div>
            <div class="room-services-list">
              <div class="row">
                <div class="col-sm-4">
+
                  <ul class="list-unstyled">
                    <li>
                      <i class="fa fa-check"></i>Double Bed</li>
@@ -145,6 +67,7 @@
                    <li>
                      <i class="fa fa-check"></i>Free Internet</li>
                  </ul>
+
                </div>
                <div class="col-sm-4">
                  <ul class="list-unstyled">
@@ -172,14 +95,6 @@
                </div>
              </div>
            </div>
-           <p>Horem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
-             ex ea
-             <u>commodo consequat.</u>
-             Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit...</p>
-           <p>Horem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
-             ex ea
-             <u>commodo consequat.</u>
-             Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit...</p>
            <!-- ROOM REVIEWS -->
            <div id="room-reviews" class="room-reviews">
              <div class="section-title sm">
@@ -287,7 +202,7 @@
              </div>
              <div class="review-box">
                <figure class="review-author">
-                 <img src="images/users/user1.jpg" alt="Image">
+                 <img src="{{ images/users/user1.jpg }}" alt="Image">
                </figure>
                <div class="review-contentt">
                  <div class="rating">
