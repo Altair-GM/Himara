@@ -7,6 +7,7 @@ use App\Http\Controllers\ChambreController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\InfoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,33 +54,37 @@ Route::get('/style/guide', [FrontController::class, 'style/guide']);
 Route::get("/dashboard/caroussel", [CarouselController::class, "index"])->name("caroussel");
 Route::get("/dashboard/gallery", [GalleryController::class, "index"])->name("admin.gallery");
 Route::get("/dashboard/chambres", [ChambreController::class, "index"])->name("admin.chambres");
-Route::get("/dashboard/contact", [ContactController::class, "index"])->name("admin.contact");
+Route::get("/dashboard/contact", [InfoController::class, "index"])->name("admin.contact");
 Route::get("/dashboard/article", [ArticlesController::class, "index"])->name("admin.article");
 
 // {{ Articles }}
 Route::get("/dashboard/article/create", [ArticlesController::class, "create"])->name("admin.article.create");
 Route::post("/dashboard/article/store", [ArticlesController::class, "store"])->name("admin.article.store");
 Route::get("/dashboard/article/edit/{id}", [ArticlesController::class, "edit"])->name("admin.article.edit");
-Route::put("/dashboard/article/edit/{id}", [ArticlesController::class, "udpate"])->name("admin.article.update");
+Route::put("/dashboard/article/edit/{id}", [ArticlesController::class, "update"])->name("admin.article.update");
 Route::delete("/dashboard/article/delete/{id}", [ArticlesController::class, "destroy"])->name("admin.article.delete");
 
 // {{ Chambres }}
 Route::get("/dashboard/chambres/create", [ChambreController::class, "create"])->name("admin.chambres.create");
 Route::post("/dashboard/chambres/store", [ChambreController::class, "store"])->name("admin.chambres.store");
 Route::get("/dashboard/chambres/edit/{id}", [ChambreController::class, "edit"])->name("admin.chambres.edit");
-Route::put("/dashboard/chambres/edit/{id}", [ChambreController::class, "udpate"])->name("admin.chambres.update");
+Route::put("/dashboard/chambres/edit/{id}", [ChambreController::class, "update"])->name("admin.chambres.update");
 Route::delete("/dashboard/chambres/delete/{id}", [ChambreController::class, "destroy"])->name("admin.chambres.delete");
 // {{ Gallery }}
 Route::get("/dashboard/gallery/create", [GalleryController::class, "create"])->name("admin.gallery.create");
 Route::post("/dashboard/gallery/store", [GalleryController::class, "store"])->name("admin.gallery.store");
 Route::get("/dashboard/gallery/edit/{id}", [GalleryController::class, "edit"])->name("admin.gallery.edit");
-Route::put("/dashboard/gallery/edit/{id}", [GalleryController::class, "udpate"])->name("admin.gallery.update");
+Route::put("/dashboard/gallery/edit/{id}", [GalleryController::class, "update"])->name("admin.gallery.update");
 Route::delete("/dashboard/gallery/delete/{id}", [GalleryController::class, "destroy"])->name("admin.gallery.delete");
 
 // {{ Carousel }}
-
+Route::get("/dashboard/carousel/create", [CarouselController::class, "create"])->name("admin.carousel.create");
 Route::get("/dashboard/carousel/edit/{id}", [CarouselController::class, "edit"])->name("admin.carousel.edit");
-Route::put("/dashboard/carousel/edit/{id}", [CarouselController::class, "udpate"])->name("admin.carousel.update");
+Route::put("/dashboard/carousel/edit/{id}", [CarouselController::class, "update"])->name("admin.carousel.update");
+
+// {{ Info Contact }}
+Route::get('/dashboard/info/edit', [InfoController::class, 'edit'])->name('admin.info.edit');
+Route::get('/dashboard/info/update', [InfoController::class, 'update'])->name('admin.info.update');
 
 // [[[[[[[[[[[[Complements composants]]]]]]]]]]]]
 

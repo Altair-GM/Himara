@@ -102,16 +102,23 @@ class FrontController extends Controller
         $categories = CategoryImage::all();
         return view('pages.gallery', compact("imageAll", "categories"));
     }
+    
     public function icons()
     {
         return view('icons');
     }
+
     public function index()
     {
-        $imageAll = Image::all();
 
-        return view('pages.home', compact("imageAll"));
+        $serviceAll = Service::all();
+        $imageAll = Image::all();
+        $latestBlogs = Articles::latest()->take(3)->get();
+        $rooms = Chambre::inRandomOrder()->take(3)->get();
+        return view("pages.home", compact("serviceAll", "imageAll", 'rooms', 'latestBlogs'));
+    
     }
+
     public function loading()
     {
         return view('loading');
@@ -209,8 +216,9 @@ class FrontController extends Controller
         $categories = CategoryArticles::all();
         $tags = Tag::all();
 
-        $latest = Articles::latest()->where('id', '!=',$id)->take(5)->get();
+        $latest = Articles::latest()->where('id', '!=', $id)->take(5)->get();
 
         return view("pages.blogpost", compact("blog", "comment", 'categories', 'tags', 'latest'));
     }
 }
+{{  }}{{  }}{{  }}

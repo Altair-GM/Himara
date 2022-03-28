@@ -4,7 +4,7 @@
     @include('components.header')
     <!-- ========== PAGE TITLE ========== -->
     <div class="page-title gradient-overlay op6" style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
-      background-size: cover;">
+              background-size: cover;">
         <div class="container">
             <div class="inner">
                 <h1>GALLERY</h1>
@@ -34,10 +34,11 @@
             <div class="grid image-gallery row">
                 @foreach ($imageAll as $item)
                     <!-- ITEM -->
-                    <div class="gallery-item filter-{{ str_replace(' ', '', strtolower($item->category->nom)) }} col-md-3">
+                    <div
+                        class="gallery-item filter-{{ str_replace(' ', '', strtolower($item->category->nom)) }} col-md-3">
                         <figure class="gradient-overlay image-icon">
-                            <a href="{{ asset('images/gallery/' . $item->url) }}">
-                                <img src="{{ asset('images/gallery/' . $item->url) }}" class="img-fluid" alt="Image">
+                            <a href="{{ asset('storage/' . $item->url) }}">
+                                <img src="{{ asset('storage/' . $item->url) }}" class="img-fluid" alt="Image">
                             </a>
                             <figcaption>{{ $item->nom }}</figcaption>
                         </figure>

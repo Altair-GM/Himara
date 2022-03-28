@@ -14,7 +14,8 @@ class InfoController extends Controller
      */
     public function index()
     {
-        //
+        $info = Info::first();
+        return view('admin.info.index', compact('info'));
     }
 
     /**
@@ -55,8 +56,9 @@ class InfoController extends Controller
      * @param  \App\Models\Info  $info
      * @return \Illuminate\Http\Response
      */
-    public function edit(Info $info)
+    public function edit($info)
     {
+        $info = Info::first();
         return view('admin.info.edit', compact('info'));
     }
 

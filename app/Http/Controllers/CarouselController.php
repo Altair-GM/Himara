@@ -57,8 +57,9 @@ class CarouselController extends Controller
      * @param  \App\Models\Carousel  $carousel
      * @return \Illuminate\Http\Response
      */
-    public function edit(Carousel $carousel)
+    public function edit($carousel)
     {
+        $carousel = Carousel::find($carousel);
         return view('admin.carousels.edit', compact('carousel'));
     }
 
@@ -69,21 +70,20 @@ class CarouselController extends Controller
      * @param  \App\Models\Carousel  $carousel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Carousel $carousel)
+    public function update(Request $request,  $carousel)
     {
         $request->validate([
-            'image' => ['required', 'image']
+            'url' => ['required', 'image']
         ]);
-
-        if ($request->hasFile('image')) {
+        $carousel = Carousel::find($carousel);
+        if ($request->hasFile('url')) {
             if (Storage::disk('public')->exists($carousel->url)) {
-                Storage::disk('public')->delete($carousel->url);
             }
-            $image = Storage::disk('public')->put('', $request->image);
+            $image = Storage::disk('public')->put('images', $request->url);
             $carousel->url = $image;
         }
         $carousel->save();
-        return redirect()->route('carousel.index');
+        return redirect()->route('caroussel');
     }
 
     /**

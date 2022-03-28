@@ -17,7 +17,7 @@
     <div class="col-span-2">
       <p class="text-xs -translate-y-6 text-white font-semibold sm:-translate-y-8 sm:text-base translate-x-3"> thick soup </p>
       <a href="">
-        <img src="{{ asset($carousel->url) }}" class="rounded-xl brightness-75" />
+        <img src="{{ asset('storage/'.$carousel->url) }}" class="rounded-xl brightness-75" />
       </a>
       <div class="">
         <a href="{{ route('admin.carousel.edit', $carousel->id) }}" class="mb-2 md:mb-0 bg-white px-5 py-0 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">

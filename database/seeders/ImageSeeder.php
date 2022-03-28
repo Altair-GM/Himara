@@ -18,48 +18,48 @@ class ImageSeeder extends Seeder
         DB::table('images')->insert([
             [
                 "nom"=>"cocktail",
-                "url"=>"gallery3.jpg",
+                "url"=>"images/gallery/gallery3.jpg",
                 "category_image_id"=>1,
                 "created_at"=>now(),
             ],
             [
                 "nom"=>"chambre",
-                "url"=>"gallery2.jpg",
+                "url"=>"images/gallery/gallery2.jpg",
                 "category_image_id"=>4,
                 "created_at"=>now(),
 
             ],
             [
                 "nom"=>"piscine",
-                "url"=>"gallery2.jpg",
+                "url"=>"images/gallery/gallery2.jpg",
                 "category_image_id"=>2,
                 "created_at"=>now(),
 
             ],
             [
                 "nom"=>"spa",
-                "url"=>"gallery2.jpg",
+                "url"=>"images/gallery/gallery2.jpg",
                 "category_image_id"=>3,
                 "created_at"=>now(),
 
             ],
             [
                 "nom"=>"breakfast",
-                "url"=>"gallery1.jpg",
+                "url"=>"images/gallery/gallery1.jpg",
                 "category_image_id"=>1,
                 "created_at"=>now(),
 
             ],
             [
                 "nom"=>"lit",
-                "url"=>"gallery1.jpg",
+                "url"=>"images/gallery/gallery1.jpg",
                 "category_image_id"=>4,
                 "created_at"=>now(),
 
             ],
             [
                 "nom"=>"mer",
-                "url"=>"gallery10.jpg",
+                "url"=>"images/gallery/gallery10.jpg",
                 "category_image_id"=>3,
                 "created_at"=>now(),
 

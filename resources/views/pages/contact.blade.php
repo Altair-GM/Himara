@@ -28,9 +28,10 @@
            </div>
            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus sit, fugiat at in assumenda corrupti autem iste eveniet eaque vitae beatae tenetur, voluptatem eius. Numquam.</p>
            <!-- CONTACT FORM -->
-           <form id="contact-form" class="contact-form">
+           <form action="{{ route("contact.store") }}" class="contact-form" method="POST">
+            @csrf
              <div class="form-group">
-               <input class="form-control" name="name" placeholder="Name" type="text">
+               <input class="form-control" name="nom" placeholder="Nom" type="text">
              </div>
              <div class="form-group">
                <input class="form-control" name="email" placeholder="Email" type="email">
@@ -39,10 +40,10 @@
                <input class="form-control" name="phone" placeholder="Phone" type="text">
              </div>
              <div class="form-group">
-               <input class="form-control" name="subject" placeholder="Subject" type="text">
+               <input class="form-control" name="sujet" placeholder="Sujet" type="text">
              </div>
              <div class="form-group">
-               <textarea class="form-control" name="message" placeholder="Message"></textarea>
+               <textarea class="form-control" name="msg" placeholder="Message"></textarea>
              </div>
              <div class="form-group">
                <button class="btn mt30">SEND YOUR MESSAGE</button>

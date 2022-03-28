@@ -89,10 +89,12 @@ class ArticlesController extends Controller
      * @param  \App\Models\Articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function edit(Articles $articles)
+    public function edit($articles)
     {
         $tags = Tag::all();
         $category = CategoryArticles::all();
+        $articles = Articles::find($articles);
+        dd($articles);
         return view('admin.articles.edit',compact("tags","category","articles"));
     }
 
@@ -103,7 +105,7 @@ class ArticlesController extends Controller
      * @param  \App\Models\Articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Articles $article)
+    public function update(Request $request, $article)
     {
         $request->validate([
             'titre' => 'required|string',
@@ -113,6 +115,7 @@ class ArticlesController extends Controller
             'tag.*' => 'nullable|integer',
 
         ]);
+        $article = Articles::find($article);
         if ($request->hasFile('image')) {
             if (Storage::disk('public')->exists($article->img)) {
                 Storage::disk('public')->delete($article->img);

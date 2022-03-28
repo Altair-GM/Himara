@@ -1,0 +1,72 @@
+@extends('admin.layouts.index')
+@section('admin')
+    <!-- This is an example component -->
+
+
+    <style>
+        .table {
+            border-spacing: 0 15px;
+        }
+
+        i {
+            font-size: 1rem !important;
+        }
+
+        .table tr {
+            border-radius: 20px;
+        }
+
+        tr td:nth-child(n + 6),
+        tr th:nth-child(n + 6) {
+            border-radius: 0 0.625rem 0.625rem 0;
+        }
+
+        tr td:nth-child(1),
+        tr th:nth-child(1) {
+            border-radius: 0.625rem 0 0 0.625rem;
+        }
+
+    </style>
+
+
+    <!-- component -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet" />
+    <div class="flex items-center justify-center min-h-screen bg-white w-full">
+        <div class="col-span-12">
+            <div class="overflow-auto lg:overflow-visible">
+
+                <table class="table text-gray-400 border-separate space-y-6 text-sm">
+                    <thead class="bg-blue-500 text-white">
+                        <tr>
+                            <th class="p-3">Adresse</th>
+                            <th class="p-3 text-left">Email</th>
+                            <th class="p-3 text-left">Téléphone</th>
+                            <th class="p-3 text-left">Gsm</th>
+
+                            <th class="p-3 text-left">Site</th>
+                            <th class="p-3 text-left">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="bg-blue-200 lg:text-black">
+                            <td class="p-3 font-medium capitalize">{{ $info->adresse }}</td>
+                            <td class="p-3">{{ $info->email }}</td>
+                            <td class="p-3">{{ $info->phone }}</td>
+                            <td class="p-3 uppercase">{{ $info->gsm }}</td>
+                            <td class="p-3 uppercase">{{ $info->site }}</td>
+
+                            <td class="p-3">
+                                <a href="{{route('admin.info.edit')}}" class="text-yellow-400 hover:text-gray-100 mx-2">
+                                    <i class="material-icons-outlined text-base">edit</i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+@endsection
