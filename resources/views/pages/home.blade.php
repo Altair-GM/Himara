@@ -986,9 +986,10 @@
               <h4>CONTACT US</h4>
               <p class="section-subtitle">Say hello</p>
             </div>
-            <form id="contact-form" name="contact-form">
+            <form  action="{{ route('contact.store') }}" name="contact-form" method="POST">
+              @csrf
               <div class="form-group">
-                <input class="form-control" name="name" placeholder="Your Name" type="text">
+                <input class="form-control" name="nom" placeholder="Your Name" type="text">
               </div>
               <div class="form-group">
                 <input class="form-control" name="email" type="email" placeholder="Your Email Address">

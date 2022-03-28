@@ -202,7 +202,7 @@
              </div>
              <div class="review-box">
                <figure class="review-author">
-                 <img src="{{ images/users/user1.jpg }}" alt="Image">
+                 <img src="{{ asset('images/users/user1.jpg') }}" alt="Image">
                </figure>
                <div class="review-contentt">
                  <div class="rating">
@@ -225,7 +225,7 @@
              <!-- End review-box -->
              <div class="review-box clearfix">
                <figure class="review-author">
-                 <img src="images/users/user2.jpg" alt="Image">
+                 <img src="{{ asset('images/users/user2.jpg') }}" alt="Image">
                </figure>
                <div class="review-contentt">
                  <div class="rating">
@@ -248,7 +248,7 @@
              <!-- End review-box -->
              <div class="review-box clearfix">
                <figure class="review-author">
-                 <img src="images/users/user3.jpg" alt="Image">
+                 <img src="{{ asset('images/users/user3.jpg') }}" alt="Image">
                </figure>
                <div class="review-contentt">
                  <div class="rating">
@@ -280,7 +280,7 @@
                  <div class="room-grid-item">
                    <figure class="gradient-overlay-hover link-icon">
                      <a href="room.html">
-                       <img src="images/rooms/single/single1.jpg" class="img-fluid" alt="Image">
+                       <img src="{{ asset('images/rooms/single/single1.jpg') }}" class="img-fluid" alt="Image">
                      </a>
                      <div class="room-services">
                        <i class="fa fa-coffee" aria-hidden="true" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Breakfast Included" data-original-title="Breakfast"></i>
@@ -302,7 +302,7 @@
                  <div class="room-grid-item">
                    <figure class="gradient-overlay-hover link-icon">
                      <a href="room.html">
-                       <img src="images/rooms/double/double.jpg" class="img-fluid" alt="Image">
+                       <img src="{{ asset('images/rooms/double/double.jpg') }}" class="img-fluid" alt="Image">
                      </a>
                      <div class="room-services">
                        <i class="fa fa-coffee" aria-hidden="true" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Breakfast Included" data-original-title="Breakfast"></i>
@@ -324,7 +324,7 @@
                  <div class="room-grid-item">
                    <figure class="gradient-overlay-hover link-icon">
                      <a href="room.html">
-                       <img src="images/rooms/deluxe/deluxe.jpg" class="img-fluid" alt="Image">
+                       <img src="{{ asset('images/rooms/deluxe/deluxe.jpg') }}" class="img-fluid" alt="Image">
                      </a>
                      <div class="room-services">
                        <i class="fa fa-coffee" aria-hidden="true" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Breakfast Included" data-original-title="Breakfast"></i>

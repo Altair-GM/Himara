@@ -1,3 +1,4 @@
+
 <?php
 
 use App\Http\Controllers\ArticlesController;
@@ -49,7 +50,6 @@ Route::get('/style/guide', [FrontController::class, 'style/guide']);
 // {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{ Vieuw BackEnd}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}} 
 
 // [[[[[[[[[[[[Dashboard]]]]]]]]]]]]
-
 Route::get("/dashboard/caroussel", [CarouselController::class, "index"])->name("caroussel");
 Route::get("/dashboard/gallery", [GalleryController::class, "index"])->name("admin.gallery");
 Route::get("/dashboard/chambres", [ChambreController::class, "index"])->name("admin.chambres");
@@ -87,8 +87,18 @@ Route::get("/style-guide", [FrontController::class, "styleGuide"]);
 Route::get("/buttons", [FrontController::class, "buttons"]);
 Route::get("/icons", [FrontController::class, "icons"]);
 
+// {{ {{ {{ {{ Mailing }} }} }} }}
+Route::post('contact/send', [ContactController::class, 'store'])->name('contact.store');
+
 // [[[[[[[[[[[[[[Breeze Authentification]]]]]]]]]]]]]]
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 require __DIR__ . '/auth.php';
+
+
+//affichage
+Route::get('/dashboard/mailbox', [ContactController::class, "index"])->middleware(["auth"])->name('mailbox.index');
+Route::get('/dashboard/mailbox/archives', [ContactController::class, "archives"])->middleware(["auth"])->name('mailbox.archive');
+Route::get('/dashboard/mailbox/{id}/delete', [ContactController::class, "destroy"])->middleware(["auth"])->name('mailbox.destroy');
+Route::get('/dashboard/mailbox/{id}/restore', [ContactController::class, "restore"])->middleware(["auth"])->name('mailbox.restore');

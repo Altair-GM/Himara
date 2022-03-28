@@ -84,7 +84,7 @@
                             <ul id="comments-list" class="comments-list">
                                 <li>
                                     <div class="comment-main-level">
-                                        <div class="comment-avatar"><img src="images/blog/users/user1.jpg" alt=""></div>
+                                        <div class="comment-avatar"><img src="{{ asset('images/blog/users/user1.jpg') }}" alt=""></div>
                                         <div class="comment-box">
                                             <div class="comment_content">
                                                 <h4 class="author-name">
@@ -108,7 +108,7 @@
                                     </div>
                                     <ul class="comments-list reply-list">
                                         <li>
-                                            <div class="comment-avatar"><img src="images/blog/users/user2.jpg" alt="">
+                                            <div class="comment-avatar"><img src="{{asset('images/blog/users/user2.jpg') }}" alt="">
                                             </div>
                                             <div class="comment-box">
                                                 <div class="comment_content">
@@ -135,7 +135,7 @@
                                         </li>
                                         <li>
                                             <div class="comment-avatar">
-                                                <img src="images/blog/users/user3.jpg" alt="">
+                                                <img src="{{ asset('images/blog/users/user3.jpg') }}" alt="">
                                             </div>
                                             <div class="comment-box">
                                                 <div class="comment_content">
@@ -163,7 +163,7 @@
                                 <li>
                                     <div class="comment-main-level">
                                         <div class="comment-avatar">
-                                            <img src="images/blog/users/user4.jpg" alt="">
+                                            <img src="{{ asset('images/blog/users/user4.jpg') }}" alt="">
                                         </div>
                                         <div class="comment-box">
                                             <div class="comment_content">
@@ -292,14 +292,14 @@
                         <!-- WIDGET -->
                         <div class="col-md-3">
                             <div class="footer-widget">
-                                <img src="images/logo.svg" class="footer-logo" alt="Hotel Himara">
+                                <img src="{{ asset('images/logo.svg') }}" class="footer-logo" alt="Hotel Himara">
                                 <div class="inner">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, velit placeat
                                         assumenda incidunt dolorem aliquam!</p>
                                     <a href="https://www.tripadvisor.com/" target="_blank">
                                         <div class="tripadvisor-banner">
                                             <span class="review">Recommended</span>
-                                            <img src="images/icons/tripadvisor.png" alt="Image">
+                                            <img src="{{ asset('images/icons/tripadvisor.png') }}" alt="Image">
                                         </div>
                                     </a>
                                 </div>

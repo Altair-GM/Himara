@@ -3,7 +3,7 @@
         <div class="loader-inner">
           <div class="spin">
             <span></span>
-            <img src="images/logo.svg" alt="Hotel Himara">
+            <img src="{{ asset('images/logo.svg') }}" alt="Hotel Himara">
           </div>
         </div>
       </div>
