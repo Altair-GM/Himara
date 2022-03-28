@@ -221,4 +221,3 @@ class FrontController extends Controller
         return view("pages.blogpost", compact("blog", "comment", 'categories', 'tags', 'latest'));
     }
 }
-{{  }}{{  }}{{  }}
