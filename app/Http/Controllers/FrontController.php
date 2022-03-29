@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Articles;
+use App\Models\Carousel;
 use App\Models\CategoryArticles;
 use App\Models\CategoryChambre;
 use App\Models\CategoryImage;
@@ -75,7 +76,9 @@ class FrontController extends Controller
 
     public function booking_form()
     {
-        return view('booking-form');
+        $categorieroom = CategoryChambre::all();
+        $offers = Chambre::inRandomOrder()->take(3)->get();
+        return view('pages.reservation', compact("categorieroom", 'offers'));
     }
     public function buttons()
     {
@@ -102,7 +105,7 @@ class FrontController extends Controller
         $categories = CategoryImage::all();
         return view('pages.gallery', compact("imageAll", "categories"));
     }
-    
+
     public function icons()
     {
         return view('icons');
@@ -112,11 +115,12 @@ class FrontController extends Controller
     {
 
         $serviceAll = Service::all();
+        $carousels = Carousel::all();
         $imageAll = Image::all();
+        $category_chambres = CategoryChambre::all();
         $latestBlogs = Articles::latest()->take(3)->get();
         $rooms = Chambre::inRandomOrder()->take(3)->get();
-        return view("pages.home", compact("serviceAll", "imageAll", 'rooms', 'latestBlogs'));
-    
+        return view("pages.home", compact("serviceAll", "imageAll", 'rooms', 'latestBlogs', 'carousels', 'category_chambres'));
     }
 
     public function loading()

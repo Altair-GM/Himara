@@ -44,30 +44,36 @@ class ChambreController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'titre' => 'required|string',
-            'texte' => 'required|string',
+            'nom' => 'required|string',
+            'description' => 'required|string',
             'image' => 'required|image',
-            'categorie' => 'required|integer',
+            'sofa' => 'required',
+            'lit' => 'required',
+            'max' => 'required',
+            'category_chambre_id' => 'required|integer',
             'tag.*' => 'nullable|integer',
         ]);
 
         $image = Storage::disk('public')->put('', $request->image);
-        $article = new Chambre();
-        $article->img = $image;
-        $article->title = $request->title;
-        $article->description = $request->description;
-        $article->user_id = Auth::id();
-        $article->category_article_id = $request->categorie;
-        $article->save();
+        $chambre = new Chambre();
+        $chambre->image = $image;
+        $chambre->nom = $request->nom;
+        $chambre->prix = $request->prix;
+        $chambre->max = $request->max;
+        $chambre->sofa = $request->sofa;
+        $chambre->lit = $request->lit;
+        $chambre->description = $request->description;
+        $chambre->category_chambre_id = $request->category_chambre_id;
+        $chambre->save();
 
         if ($request->has('tag')) {
 
             foreach ($request->tag as $item) {
-                TagChambres::find($item)->chambres()->attach($article->id);
-                $article->tags()->attach($item);
+                TagChambres::find($item)->rooms()->attach($chambre->id);
+                $chambre->tags()->attach($item);
             }
         }
-        return redirect()->route('admin.chambres.index');
+        return redirect()->route('admin.chambres');
     }
 
     /**
@@ -87,11 +93,12 @@ class ChambreController extends Controller
      * @param  \App\Models\Chambre  $chambres
      * @return \Illuminate\Http\Response
      */
-    public function edit(Chambre $chambres)
+    public function edit($chambre)
     {
+        $chambre = Chambre::find($chambre);
         $tags = TagChambres::all();
         $category = CategoryChambre::all();
-        return view('admin.rooms.edit', compact("tags", "category", "chambres"));
+        return view('admin.rooms.edit', compact("tags", "category", "chambre"));
     }
 
     /**
@@ -101,38 +108,45 @@ class ChambreController extends Controller
      * @param  \App\Models\Chambre  $chambres
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Chambre $article)
+    public function update(Request $request, $chambre)
     {
         $request->validate([
-            'titre' => 'required|string',
-            'texte' => 'required|string',
-            'image' => 'somtimes|image',
-            'categorie' => 'required|integer',
+            'nom' => 'required|string',
+            'description' => 'required|string',
+            'image' => 'required|image',
+            'sofa' => 'required',
+            'lit' => 'required',
+            'max' => 'required',
+            'category_chambre_id' => 'required|integer',
             'tag.*' => 'nullable|integer',
-
         ]);
+
+        $chambre = Chambre::find($chambre);
         if ($request->hasFile('image')) {
-            if (Storage::disk('public')->exists($article->img)) {
-                Storage::disk('public')->delete($article->img);
-            }
+            // if (Storage::disk('public')->exists($chambre->image)) {
+            //     Storage::disk('public')->delete($chambre->image);
+            // }
             $image = Storage::disk('public')->put('', $request->image);
-            $article->img = $image;
+            $chambre->image = $image;
         }
-        $article->title = $request->title;
-        $article->description = $request->description;
-        $article->user_id = Auth::id();
-        $article->category_article_id = $request->categorie;
-        $article->save();
+        $chambre->nom = $request->nom;
+        $chambre->prix = $request->prix;
+        $chambre->max = $request->max;
+        $chambre->sofa = $request->sofa;
+        $chambre->lit = $request->lit;
+        $chambre->description = $request->description;
+        $chambre->category_chambre_id = $request->category_chambre_id;
+        $chambre->save();
         if ($request->has('tag')) {
 
-            $article->tags()->detach();
+            $chambre->tags()->detach();
 
             foreach ($request->tag as $item) {
-                TagChambres::find($item)->chambres()->attach($article->id);
-                $article->tags()->attach($item);
+                TagChambres::find($item)->rooms()->attach($chambre->id);
+                $chambre->tags()->attach($item);
             }
         }
-        return redirect()->route('admin.chambres.index');
+        return redirect()->route('admin.chambres');
     }
 
     /**
@@ -141,9 +155,10 @@ class ChambreController extends Controller
      * @param  \App\Models\Chambre  $chambres
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Chambre $chambres)
+    public function destroy($chambre)
     {
-        $chambres->delete();
+        $chambre = Chambre::find($chambre);
+        $chambre->delete();
         return back();
     }
 }

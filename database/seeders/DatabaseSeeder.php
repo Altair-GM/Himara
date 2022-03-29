@@ -43,6 +43,7 @@ class DatabaseSeeder extends Seeder
             ChambreServiceSeeder::class,
             ImageSeeder::class,
             ReservationSeeder::class,
+            ReviewSeeder::class,
             
 
             

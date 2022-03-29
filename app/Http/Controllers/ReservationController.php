@@ -17,7 +17,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        //
+        $reservations= Reservation::orderBy('fin')->get();
+        return view('admin.reservations.index', compact('reservations'));
     }
 
     /**
@@ -62,7 +63,7 @@ class ReservationController extends Controller
         $reservation->telephone = $request->telephone;
         $reservation->country = $request->country;
         $reservation->valide = false;
-        $reservation->category_room_id = $request->category_room_id;
+        $reservation->category_chambre_id = $request->category_chambre_id;
         $reservation->save();
         return back();
     }

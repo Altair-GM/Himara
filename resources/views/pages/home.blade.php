@@ -9,9 +9,9 @@
                 <!-- SLIDE NR. 1 -->
                 <li data-transition="crossfade">
                     <!-- MAIN IMAGE -->
-                    <img src="images/slider/slider1.jpg" alt="Image" title="Image" data-bgposition="center center"
-                        data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
-                        data-no-retina="">
+                    <img src="{{ asset('storage/' . $carousels[0]->url) }}" alt="Image" title="Image"
+                        data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10"
+                        class="rev-slidebg" data-no-retina="">
                     <!-- LAYER NR. 1 -->
                     <h1 class="tp-caption tp-resizeme" data-x="center" data-hoffset="" data-y="320" data-voffset=""
                         data-responsive_offset="on" data-fontsize="['80','50','40','30']"
@@ -64,9 +64,9 @@
                 <!-- SLIDE NR. 2 -->
                 <li data-transition="crossfade">
                     <!-- MAIN IMAGE -->
-                    <img src="images/slider/slider3.jpg" alt="Image" title="Image" data-bgposition="center center"
-                        data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
-                        data-no-retina="">
+                    <img src="{{ asset('storage/' . $carousels[1]->url) }}" alt="Image" title="Image"
+                        data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10"
+                        class="rev-slidebg" data-no-retina="">
                     <!-- LAYER NR. 1 -->
                     <div class="tp-caption tp-resizeme" data-x="center" data-hoffset="" data-y="320" data-voffset=""
                         data-responsive_offset="on" data-fontsize="['70','50','40','25']"
@@ -84,9 +84,9 @@
                 <!-- SLIDE NR. 3 -->
                 <li data-transition="crossfade">
                     <!-- MAIN IMAGE -->
-                    <img src="images/slider/slider13.jpg" alt="Image" title="Image" data-bgposition="center center"
-                        data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
-                        data-no-retina="">
+                    <img src="{{ asset('storage/' . $carousels[2]->url) }}" alt="Image" title="Image"
+                        data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10"
+                        class="rev-slidebg" data-no-retina="">
                     <!-- LAYER NR. 1 -->
                     <div class="tp-caption tp-resizeme" data-x="center" data-hoffset="" data-y="305" data-voffset=""
                         data-responsive_offset="on" data-fontsize="['80','70','60','40']"
@@ -109,7 +109,8 @@
                 <div class="inner box-shadow-007">
                     <!-- ========== BOOKING NOTIFICATION ========== -->
                     <div id="booking-notification" class="notification"></div>
-                    <form id="booking-form">
+                    <form action="{{ route('reservation.store') }}" method="POST">
+                        @csrf
                         <!-- NAME -->
                         <div class="row">
                             <div class="col-md-2">
@@ -120,7 +121,7 @@
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </label>
-                                    <input class="form-control" name="booking-name" type="text" data-trigger="hover"
+                                    <input class="form-control" name="nom" type="text" data-trigger="hover"
                                         placeholder="Write Your Name">
                                 </div>
                             </div>
@@ -133,8 +134,7 @@
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </label>
-                                    <input class="form-control" name="booking-email" type="email"
-                                        placeholder="Write your Email">
+                                    <input class="form-control" name="email" type="email" placeholder="Write your Email">
                                 </div>
                             </div>
                             <!-- ROOM TYPE -->
@@ -146,11 +146,11 @@
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </label>
-                                    <select class="form-control" name="booking-roomtype" title="Select Room Type"
+                                    <select class="form-control" name="category_chambre_id" title="Select Room Type"
                                         data-header="Room Type">
-                                        <option value="Single">Single Room</option>
-                                        <option value="Double">Double Room</option>
-                                        <option value="Deluxe">Deluxe Room</option>
+                                        @foreach ($category_chambres as $item)
+                                            <option value="{{ $item->id }}">{{ $item->nom }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -164,7 +164,7 @@
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                     </label>
-                                    <input type="text" class="datepicker form-control" name="booking-date"
+                                    <input type="text" class="datepicker form-control" name="booking_date"
                                         placeholder="Arrival & Departure" readonly="readonly">
                                 </div>
                             </div>
@@ -192,13 +192,12 @@
                                                 </label>
                                                 <div class="guests-button">
                                                     <div class="minus"></div>
-                                                    <input type="text" name="booking-adults" class="booking-guests"
-                                                        value="0">
+                                                    <input type="text" name="adult" class="booking-guests" value="0">
                                                     <div class="plus"></div>
                                                 </div>
                                             </div>
                                             <div class="guests-buttons">
-                                                <label>Cildren
+                                                <label>Children
                                                     <a href="#" title="" data-toggle="popover" data-placement="top"
                                                         data-trigger="hover" data-content="Under 18 years"
                                                         data-original-title="Children">
@@ -207,8 +206,7 @@
                                                 </label>
                                                 <div class="guests-button">
                                                     <div class="minus"></div>
-                                                    <input type="text" name="booking-children" class="booking-guests"
-                                                        value="0">
+                                                    <input type="text" name="enfant" class="booking-guests" value="0">
                                                     <div class="plus"></div>
                                                 </div>
                                             </div>
@@ -220,7 +218,7 @@
                             <div class="col-md-2">
                                 <button type="submit" class="btn btn-book">BOOK A ROOM</button>
                                 <div class="advanced-form-link">
-                                    <a href="booking-form.html">
+                                    <a href="{{route('booking.form')}}">
                                         Advanced Booking Form
                                     </a>
                                 </div>
@@ -257,25 +255,25 @@
                             <!-- ITEM -->
                             <div class="item">
                                 <a href="#">
-                                    <img src="images/providers/provider-1.png" alt="Image">
+                                    <img src="{{ asset('storage/images/providers/provider-1.png') }}" alt="Image">
                                 </a>
                             </div>
                             <!-- ITEM -->
                             <div class="item">
                                 <a href="#">
-                                    <img src="images/providers/provider-2.png" alt="Image">
+                                    <img src="{{ asset('storage/images/providers/provider-2.png') }}" alt="Image">
                                 </a>
                             </div>
                             <!-- ITEM -->
                             <div class="item">
                                 <a href="#">
-                                    <img src="images/providers/provider-3.png" alt="Image">
+                                    <img src="{{ asset('storage/images/providers/provider-3.png') }}" alt="Image">
                                 </a>
                             </div>
                             <!-- ITEM -->
                             <div class="item">
                                 <a href="#">
-                                    <img src="images/providers/provider-4.png" alt="Image">
+                                    <img src="{{ asset('storage/images/providers/provider-4.png') }}" alt="Image">
                                 </a>
                             </div>
                         </div>
@@ -318,8 +316,8 @@
                     <div class="col-md-4">
                         <div class="room-grid-item">
                             <figure class="gradient-overlay-hover link-icon">
-                                <a href="{{ route('blog.show', $item->id)}}">
-                                    <img src="{{ asset('storage/'.$item->image)}}" class="img-fluid" alt="Image">
+                                <a href="{{ route('room.show', $item->id) }}">
+                                    <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid" alt="Image">
                                 </a>
                                 <div class="room-services">
                                     <i class="fa fa-coffee" aria-hidden="true" data-toggle="popover"
@@ -332,13 +330,13 @@
                                         data-trigger="hover" data-content="Plasma TV with cable channels"
                                         data-original-title="TV"></i>
                                 </div>
-                                <div class="room-price">€{{$item->prix}} / night</div>
+                                <div class="room-price">€{{ $item->prix }} / night</div>
                             </figure>
                             <div class="room-info">
                                 <h2 class="room-title">
-                                    <a href="{{route('blog.show', $item->id)}}">{{$item->nom}}</a>
+                                    <a href="{{ route('blog.show', $item->id) }}">{{ $item->nom }}</a>
                                 </h2>
-                                <p>Enjoy our {{$item->category->nom}}</p>
+                                <p>Enjoy our {{ $item->category->nom }}</p>
                             </div>
                         </div>
                     </div>
@@ -357,25 +355,25 @@
                 <div class="col-lg-7 col-12">
                     <div data-slider-id="services" class="services-owl owl-carousel">
                         <figure class="gradient-overlay">
-                            <img src="images/services/restaurant.jpg" class="img-fluid" alt="Image">
+                            <img src="{{ asset('storage/images/services/restaurant.jpg')}}" class="img-fluid" alt="Image">
                             <figcaption>
                                 <h4>Restaurant</h4>
                             </figcaption>
                         </figure>
                         <figure class="gradient-overlay">
-                            <img src="images/services/spa.jpg" class="img-fluid" alt="Image">
+                            <img src="{{ asset('storage/images/services/spa.jpg')}}" class="img-fluid" alt="Image">
                             <figcaption>
                                 <h4>Spa</h4>
                             </figcaption>
                         </figure>
                         <figure class="gradient-overlay">
-                            <img src="images/services/conference.jpg" class="img-fluid" alt="Image">
+                            <img src="{{ asset('storage/images/services/conference.jpg')}}" class="img-fluid" alt="Image">
                             <figcaption>
                                 <h4>Conference Room</h4>
                             </figcaption>
                         </figure>
                         <figure class="gradient-overlay">
-                            <img src="images/services/swimming.jpg" class="img-fluid" alt="Image">
+                            <img src="{{ asset('storage/images/services/swimming.jpg')}}" class="img-fluid" alt="Image">
                             <figcaption>
                                 <h4>Swimming Pool</h4>
                             </figcaption>
@@ -454,7 +452,7 @@
                     </div>
                 @endforeach
 
-              
+
             </div>
         </div>
     </section>
@@ -730,36 +728,36 @@
             <div class="row">
 
                 @foreach ($latestBlogs as $item)
-                <!-- ITEM -->
-                <div class="col-md-4">
-                    <div class="news-grid-item">
-                        <figure class="gradient-overlay-hover link-icon">
-                            <a href="{{route('blog.show', $item->id)}}">
-                                <img src="{{asset('storage/'.$item->img)}}" class="img-fluid" alt="Image">
-                            </a>
-                        </figure>
-                        <div class="news-info">
-                            <h4 class="title">
-                                <a href="{{route('blog.show', $item->id)}}">{{$item->nom}}</a>
-                            </h4>
-                            <p>{{$item->description}}</p>
-                            <div class="post-meta">
-                                <span class="author">
-                                    <a href="#"><img src="images/users/admin.jpg" width="16" alt="Image">
-                                        {{$item->author->nom}}</a>
-                                </span>
-                                <span class="date">
-                                    <i class="fa fa-clock-o"></i>
-                                    {{$item->created_at}}</span>
-                                <span class="comments">
-                                    <a href="#">
-                                        <i class="fa fa-commenting-o"></i>
-                                        1 Comment</a>
-                                </span>
+                    <!-- ITEM -->
+                    <div class="col-md-4">
+                        <div class="news-grid-item">
+                            <figure class="gradient-overlay-hover link-icon">
+                                <a href="{{ route('blog.show', $item->id) }}">
+                                    <img src="{{ asset('storage/' . $item->img) }}" class="img-fluid" alt="Image">
+                                </a>
+                            </figure>
+                            <div class="news-info">
+                                <h4 class="title">
+                                    <a href="{{ route('blog.show', $item->id) }}">{{ $item->nom }}</a>
+                                </h4>
+                                <p>{{ Str::limit($item->description, 50) }}</p>
+                                <div class="post-meta">
+                                    <span class="author">
+                                        <a href="#"><img src="images/users/admin.jpg" width="16" alt="Image">
+                                            {{ $item->author->nom }}</a>
+                                    </span>
+                                    <span class="date">
+                                        <i class="fa fa-clock-o"></i>
+                                        {{ $item->created_at }}</span>
+                                    <span class="comments">
+                                        <a href="#">
+                                            <i class="fa fa-commenting-o"></i>
+                                            1 Comment</a>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>

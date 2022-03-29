@@ -27,7 +27,7 @@
     
                 <div class="flex justify-center m-auto items-center h-full">
                     <a href="{{ route("home") }}">
-                        <img src="{{ asset($navLogo->url) }}" alt="Hotel Himara" >
+                        <img src="{{ asset('storage/'.$navLogo->url) }}" alt="Hotel Himara" >
                     </a>
     
                 </div>

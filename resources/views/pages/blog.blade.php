@@ -33,7 +33,7 @@
                                         <div class="post-thumbnail">
                                             <figure class="gradient-overlay-hover link-icon">
                                                 <a href="{{ route("blog.show", $article->id) }}">
-                                                    <img src="{{ asset($article->img) }}" class="img-fluid"
+                                                    <img src="{{ asset('storage/'.$article->img) }}" class="img-fluid"
                                                         alt="Image">
                                                 </a>
                                             </figure>

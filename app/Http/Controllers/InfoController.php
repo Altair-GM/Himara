@@ -56,7 +56,7 @@ class InfoController extends Controller
      * @param  \App\Models\Info  $info
      * @return \Illuminate\Http\Response
      */
-    public function edit($info)
+    public function edit()
     {
         $info = Info::first();
         return view('admin.info.edit', compact('info'));
@@ -69,7 +69,7 @@ class InfoController extends Controller
      * @param  \App\Models\Info  $info
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Info $info)
+    public function update(Request $request)
     {
         $request->validate([
             "email" => ['required'],
@@ -79,13 +79,14 @@ class InfoController extends Controller
             "site" => ['required'],
         ]);
 
+        $info = Info::first();
         $info->email = $request->email;
         $info->adresse = $request->adresse;
         $info->phone = $request->phone;
         $info->gsm = $request->gsm;
         $info->site = $request->site;
         $info->save();
-        return redirect()->route('info.edit');
+        return redirect()->route('admin.contact');
     }
 
     /**

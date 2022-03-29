@@ -16,11 +16,11 @@ class CreateChambreServicesTable extends Migration
         Schema::create('chambre_services', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("service_room_id");
-            $table->foreign('service_room_id')->on('service_rooms')->references('id');
+            $table->foreign('service_room_id')->on('service_rooms')->references('id')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("statut_service_id");
-            $table->foreign("statut_service_id")->on("statut_services")->references("id");
+            $table->foreign("statut_service_id")->on("statut_services")->references("id")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("chambre_id");
-            $table->foreign("chambre_id")->on("chambres")->references("id");
+            $table->foreign("chambre_id")->on("chambres")->references("id")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

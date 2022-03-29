@@ -28,7 +28,7 @@ class StaffController extends Controller
     public function create()
     {
         $fonctions = Fonction::all();
-        return view('admin.fonctions.create', compact('fonctions'));
+        return view('admin.staff.create', compact('fonctions'));
     }
 
     /**
@@ -42,7 +42,7 @@ class StaffController extends Controller
         $request->validate([
             "nom" => ['required'],
             "prenom" => ['required'],
-            "image" => ['required', 'image'],
+            "img" => ['required', 'image'],
             "description" => ['required'],
             "fonction_id" => ['required', 'exists:fonctions,id'],
         ]);
@@ -51,11 +51,12 @@ class StaffController extends Controller
         $staff->nom = $request->nom;
         $staff->prenom = $request->prenom;
         $staff->description = $request->description;
+        
         $staff->fonction_id = $request->fonction_id;
-        $image = Storage::disk('public')->put('', $request->image);
+        $image = Storage::disk('public')->put('images', $request->img);
         $staff->img = $image;
         $staff->save();
-        return redirect()->route('staff.index');
+        return redirect()->route('admin.staff');
     }
 
     /**
@@ -75,10 +76,11 @@ class StaffController extends Controller
      * @param  \App\Models\Staff  $staff
      * @return \Illuminate\Http\Response
      */
-    public function edit(Staff $staff)
+    public function edit($staff)
     {
+        $staff = Staff::find($staff);
         $fonctions = Fonction::all();
-        return view('admin.fonctions.create', compact('fonctions', 'staff'));
+        return view('admin.staff.edit', compact('fonctions', 'staff'));
     }
 
     /**
@@ -88,31 +90,40 @@ class StaffController extends Controller
      * @param  \App\Models\Staff  $staff
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Staff $staff)
+    public function update(Request $request, $staff)
     {
         $request->validate([
             "nom" => ['required'],
             "prenom" => ['required'],
-            "image" => ['required', 'image'],
+            "img" => ['required', 'image'],
             "description" => ['required'],
             "fonction_id" => ['required', 'exists:fonctions,id'],
         ]);
 
-        if ($request->hasFile('image')) {
-            if (Storage::disk('public')->exists($staff->img)) {
-                Storage::disk('public')->delete($staff->img);
-            }
-            $image = Storage::disk('public')->put('', $request->image);
+        $staff = Staff::find($staff);
+
+        if ($request->hasFile('img')) {
+            // if (Storage::disk('public')->exists($staff->img)) {
+            //     Storage::disk('public')->delete($staff->img);
+            // }
+            $image = Storage::disk('public')->put('images', $request->img);
             $staff->img = $image;
         }
 
         $staff->nom = $request->nom;
         $staff->prenom = $request->prenom;
         $staff->description = $request->description;
-        $staff->fonction_id = $request->fonction_id;
-        $image = Storage::disk('public')->put('', $request->image);
+        if ($staff->fonction_id != 1) {
+
+            if ($request->fonction_id == 1) {
+                $houseKeep = Staff::where('fonction_id', 1)->first();
+                $houseKeep->fonction_id = $staff->fonction_id;
+                $houseKeep->save();
+            }
+            $staff->fonction_id = $request->fonction_id;
+        }
         $staff->save();
-        return redirect()->route('staff.index');
+        return redirect()->route('admin.staff');
     }
 
     /**
@@ -121,12 +132,15 @@ class StaffController extends Controller
      * @param  \App\Models\Staff  $staff
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Staff $staff)
+    public function destroy($staff)
     {
-        if (Storage::disk('public')->exists($staff->img)) {
-            Storage::disk('public')->delete($staff->img);
+        $staff = Staff::find($staff);
+        if ($staff->fonction_id != 1) {
+            // if (Storage::disk('public')->exists($staff->img)) {
+            //     Storage::disk('public')->delete($staff->img);
+            // }
+            $staff->delete();
         }
-        $staff->delete();
         return back();
     }
 }

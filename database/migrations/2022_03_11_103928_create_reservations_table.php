@@ -21,10 +21,12 @@ class CreateReservationsTable extends Migration
             $table->dateTime("fin");
             $table->integer("adult");
             $table->integer("enfant");
-            $table->unsignedBigInteger("user_id");
-            $table->foreign("user_id")->on("users")->references("id");
+            $table->text('commentaire')->nullable();
+            $table->bigInteger('telephone')->nullable();
+            $table->string('country')->nullable();
             $table->unsignedBigInteger("category_chambre_id");
-            $table->foreign("category_chambre_id")->on("category_chambres")->references("id");
+            $table->foreign("category_chambre_id")->on("category_chambres")->references("id")->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean("valide");
 
             $table->timestamps();
         });

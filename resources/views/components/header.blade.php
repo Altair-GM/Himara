@@ -3,7 +3,7 @@
         <div class="loader-inner">
           <div class="spin">
             <span></span>
-            <img src="{{ asset('images/logo.svg') }}" alt="Hotel Himara">
+            <img src="{{ asset('storage/images/logo.svg') }}" alt="Hotel Himara">
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
             <div class="brand">
               <div class="logo">
                 <a href="{{ route("home") }}">
-                  <img src="{{ asset($navLogo->url) }}" alt="Hotel Himara">
+                  <img src="{{ asset('storage/'.$navLogo->url) }}" alt="Hotel Himara">
                 </a>
               </div>
             </div>

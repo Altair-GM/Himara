@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Reservation extends Model
 {
     use HasFactory;
+
+    public function category(){
+        return $this->belongsTo(CategoryChambre::class, 'category_chambre_id');
+    }
 }

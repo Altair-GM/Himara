@@ -24,7 +24,7 @@ class CreateChambresTable extends Migration
             $table->integer("sofa");
             $table->integer("lit");
             $table->unsignedBigInteger("category_chambre_id");
-            $table->foreign("category_chambre_id")->on("category_chambres")->references("id");
+            $table->foreign("category_chambre_id")->on("category_chambres")->references("id")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

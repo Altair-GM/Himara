@@ -100,9 +100,9 @@ class GalleryController extends Controller
         ]);
 
         if ($request->hasFile('url')) {
-            if (Storage::disk('public')->exists($gallery->url)) {
-                Storage::disk('public')->delete($gallery->url);
-            }
+            // if (Storage::disk('public')->exists($gallery->url)) {
+            //     Storage::disk('public')->delete($gallery->url);
+            // }
             $image = Storage::disk('public')->put('images/', $request->url);
             $gallery->url = $image;
         }
@@ -121,9 +121,9 @@ class GalleryController extends Controller
     public function destroy($id)
     {
         $gallery = Image::find($id);
-        if (Storage::disk('public')->exists($gallery->url)) {
-            Storage::disk('public')->delete($gallery->url);
-        }
+        // if (Storage::disk('public')->exists($gallery->url)) {
+        //     Storage::disk('public')->delete($gallery->url);
+        // }
         $gallery->delete();
         return back();
     }

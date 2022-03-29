@@ -16,11 +16,15 @@ class Chambre extends Model
     public function tags()
     {
 
-        return $this->belongsToMany(TagChambre::class, 'chambre_tags', 'chambre_id');
+        return $this->belongsToMany(TagChambres::class, 'chambre_tags', 'chambre_id','tag_chambre_id');
     }
 
     public function category()
     {
         return $this->belongsTo(CategoryChambre::class, 'category_chambre_id');
+    }
+
+    public function reviews(){
+        return $this->hasMany(Review::class,'chambre_id');
     }
 }

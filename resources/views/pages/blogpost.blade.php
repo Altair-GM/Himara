@@ -82,132 +82,53 @@
                                 <p class="section-subtitle">Leave your comment</p>
                             </div>
                             <ul id="comments-list" class="comments-list">
-                                <li>
-                                    <div class="comment-main-level">
-                                        <div class="comment-avatar"><img src="{{ asset('images/blog/users/user1.jpg') }}" alt=""></div>
-                                        <div class="comment-box">
-                                            <div class="comment_content">
-                                                <h4 class="author-name">
-                                                    <a href="#">JANE Doe</a>
-                                                </h4>
-                                                <a href="#comment-form" class="reply_link">Reply</a>
-                                                <span class="comment_info">
-                                                    <i class="fa fa-clock-o"></i>
-                                                    <a href="#">
-                                                        <time datetime="2017-10-01T19:56:36+00:00">October 1, 2017 at
-                                                            7:56 pm</time>
-                                                    </a>
-                                                </span>
-                                                <div class="comment_said_text">
-                                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                                        diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                                                        aliquam erat volutpat.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <ul class="comments-list reply-list">
-                                        <li>
-                                            <div class="comment-avatar"><img src="{{asset('images/blog/users/user2.jpg') }}" alt="">
-                                            </div>
+                                @foreach ($blog->comments()->where('validate', true)->get() as $item)
+                                    <li>
+                                        <div class="comment-main-level">
+                                            <div class="comment-avatar"><img
+                                                    src="{{ asset('storage/'.$item->photoProfil) }}" alt=""></div>
                                             <div class="comment-box">
                                                 <div class="comment_content">
                                                     <h4 class="author-name">
-                                                        <a href="#">
-                                                            Ina Aldrich</a>
+                                                        <a href="#">{{$item->name}}</a>
                                                     </h4>
-                                                    <a href="#comment-form" class="reply_link">Edit</a>
+                                                    <!-- <a href="#comment-form" class="reply_link">Reply</a> -->
                                                     <span class="comment_info">
                                                         <i class="fa fa-clock-o"></i>
                                                         <a href="#">
-                                                            <time datetime="2017-10-01T19:56:36+00:00">October 1, 2017
-                                                                at 7:56 pm</time>
+                                                            <time datetime="2017-10-01T19:56:36+00:00">{{$item->created_at}}</time>
                                                         </a>
                                                     </span>
                                                     <div class="comment_said_text">
-                                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                                            diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                                                            aliquam erat volutpat, euismod tincidunt ut laoreet dolore
-                                                            magna aliquam erat volutpat.</p>
+                                                        <p>{{$item->commentaire}}</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </li>
-                                        <li>
-                                            <div class="comment-avatar">
-                                                <img src="{{ asset('images/blog/users/user3.jpg') }}" alt="">
-                                            </div>
-                                            <div class="comment-box">
-                                                <div class="comment_content">
-                                                    <h4 class="author-name">
-                                                        <a href="#">William Whiten</a>
-                                                    </h4>
-                                                    <a href="#comment-form" class="reply_link">Reply</a>
-                                                    <span class="comment_info">
-                                                        <i class="fa fa-clock-o"></i>
-                                                        <a href="#">
-                                                            <time datetime="2017-10-01T19:56:36+00:00">October 1, 2017
-                                                                at 7:56 pm</time>
-                                                        </a>
-                                                    </span>
-                                                    <div class="comment_said_text">
-                                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                                            diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                                                            aliquam erat volutpat.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div class="comment-main-level">
-                                        <div class="comment-avatar">
-                                            <img src="{{ asset('images/blog/users/user4.jpg') }}" alt="">
                                         </div>
-                                        <div class="comment-box">
-                                            <div class="comment_content">
-                                                <h4 class="author-name">
-                                                    <a href="#">Amy Ellison</a>
-                                                </h4>
-                                                <a href="#comment-form" class="reply_link">Reply</a>
-                                                <span class="comment_info">
-                                                    <i class="fa fa-clock-o"></i>
-                                                    <a href="#">
-                                                        <time datetime="2017-10-01T19:56:36+00:00">October 1, 2017 at
-                                                            7:56 pm</time>
-                                                    </a>
-                                                </span>
-                                                <div class="comment_said_text">
-                                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                                        diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                                                        aliquam erat volutpat.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                @endforeach
                             </ul>
                             <div class="section-title mt100">
                                 <h4>LEAVE YOUR COMMENT</h4>
                                 <p class="section-subtitle">Write your comment</p>
                             </div>
-                            <form id="comment-form" class="comment-form">
+                            <form action="{{ route('comment.store', $blog->id) }}" method="POST" class="comment-form">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control" placeholder="Name*">
+                                        <input type="text" name="name" class="form-control" placeholder="Name*">
                                     </div>
                                     <div class="col-md-4">
-                                        <input type="email" class="form-control" placeholder="Email*">
+                                        <input type="email" class="form-control" name="email" placeholder="Email*">
                                     </div>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control" placeholder="Website">
+                                        <input type="text" class="form-control" name="website" placeholder="Website">
                                     </div>
                                     <div class="col-md-12">
-                                        <textarea class="form-control" placeholder="Write Your Comment"></textarea>
+                                        <textarea class="form-control" placeholder="Write Your Comment" name="commentaire"></textarea>
                                     </div>
                                     <div class="col-md-12">
-                                        <button class="btn float-right">
+                                        <button type="submit" class="btn float-right">
                                             POST YOUR COMMENT
                                         </button>
                                         <div class="align-left">*Your email address will not be published.</div>

@@ -16,9 +16,9 @@ class CreateChambreTagsTable extends Migration
         Schema::create('chambre_tags', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("chambre_id");
-            $table->foreign("chambre_id")->on("chambres")->references("id");
+            $table->foreign("chambre_id")->on("chambres")->references("id")->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger("tag_chambre_id");
-            $table->foreign("tag_chambre_id")->on("tag_chambres")->references("id");
+            $table->foreign("tag_chambre_id")->on("tag_chambres")->references("id")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

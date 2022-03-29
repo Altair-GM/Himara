@@ -4,82 +4,56 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public  function  store(Request  $request, $id)
+    {
+
+        $table = new  Comment();
+        if (Auth::check()) {
+            $request->validate([
+                'commentaire' => ['required'],
+            ]);
+            $table->name = Auth::user()->name;
+            $table->email = Auth::user()->email;
+        } else {
+            $request->validate([
+                'name' => ['required'],
+                'email' => ['required'],
+            ]);
+            $table->name = $request->name;
+            $table->email = $request->email;
+            $table->website = $request->website;
+        }
+        $table->validate = false;
+        $table->article_id = $id;
+        $table->commentaire = $request->commentaire;
+        $table->photoProfil = "images/blog-post1.jpg";
+
+        $table->save();
+        return  redirect()->back();
+    }
+
+    // delete
+    public function destroy($id)
+    {
+        $destroy = Comment::find($id);
+        $destroy->delete();
+        return  redirect()->back();
+    }
+    public function update($id)
+    {
+        $comment = Comment::find($id);
+        $comment->validate = true;
+        $comment->save();
+        return redirect()->back();
+    }
+
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Comment $comment)
-    {
-        //
+        $comment = Comment::all();
+        return view("admin.commentaire.index", compact("comment"));
     }
 }

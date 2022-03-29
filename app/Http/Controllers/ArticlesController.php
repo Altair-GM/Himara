@@ -19,7 +19,7 @@ class ArticlesController extends Controller
     public function index()
     {
         $articles = Articles::all();
-        return view('admin.articles.index',compact("articles"));
+        return view('admin.articles.index', compact("articles"));
     }
 
     /**
@@ -32,9 +32,7 @@ class ArticlesController extends Controller
 
         $tags = Tag::all();
         $category = CategoryArticles::all();
-        return view('admin.articles.create',compact("tags","category"));
-        
-
+        return view('admin.articles.create', compact("tags", "category"));
     }
 
     /**
@@ -46,20 +44,20 @@ class ArticlesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'titre' => 'required|string',
-            'texte' => 'required|string',
-            'image' => 'required|image',
-            'categorie' => 'required|integer',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'img' => 'required|image',
+            'category_article_id' => 'required|integer',
             'tag.*' => 'nullable|integer',
         ]);
 
-        $image = Storage::disk('public')->put('', $request->image);
+        $image = Storage::disk('public')->put('images', $request->img);
         $article = new Articles();
         $article->img = $image;
         $article->title = $request->title;
         $article->description = $request->description;
         $article->user_id = Auth::id();
-        $article->category_article_id = $request->categorie;
+        $article->category_article_id = $request->category_article_id;
         $article->save();
 
         if ($request->has('tag')) {
@@ -92,10 +90,10 @@ class ArticlesController extends Controller
     public function edit($articles)
     {
         $tags = Tag::all();
-        $category = CategoryArticles::all();
+        $category = CategoryArticles::all();{{  }}
         $articles = Articles::find($articles);
-        dd($articles);
-        return view('admin.articles.edit',compact("tags","category","articles"));
+        // dd($articles);
+        return view('admin.articles.edit', compact("tags", "category", "articles"));
     }
 
     /**
@@ -108,25 +106,25 @@ class ArticlesController extends Controller
     public function update(Request $request, $article)
     {
         $request->validate([
-            'titre' => 'required|string',
-            'texte' => 'required|string',
-            'image' => 'somtimes|image',
-            'categorie' => 'required|integer',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'img' => 'somtimes|image',
+            'category_article_id' => 'required|integer',
             'tag.*' => 'nullable|integer',
 
         ]);
         $article = Articles::find($article);
         if ($request->hasFile('image')) {
-            if (Storage::disk('public')->exists($article->img)) {
-                Storage::disk('public')->delete($article->img);
-            }
-            $image = Storage::disk('public')->put('', $request->image);
+            // if (Storage::disk('public')->exists($article->img)) {
+            //     Storage::disk('public')->delete($article->img);
+            // }
+            $image = Storage::disk('public')->put('images', $request->img);
             $article->img = $image;
         }
         $article->title = $request->title;
         $article->description = $request->description;
         $article->user_id = Auth::id();
-        $article->category_article_id = $request->categorie;
+        $article->category_article_id = $request->category_article_id;
         $article->save();
         if ($request->has('tag')) {
 
@@ -137,7 +135,7 @@ class ArticlesController extends Controller
                 $article->tags()->attach($item);
             }
         }
-        return redirect()->route('article.index');
+        return redirect()->route('admin.article');
     }
 
     /**
@@ -146,9 +144,13 @@ class ArticlesController extends Controller
      * @param  \App\Models\Articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Articles $articles)
+    public function destroy( $articles)
     {
-        $articles->delete();
+        $article = Articles::find($articles);
+        // if (Storage::disk('public')->exists($article->img)) {
+        //     Storage::disk('public')->delete($article->img);
+        // }
+        $article->delete();
         return back();
     }
 }

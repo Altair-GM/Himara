@@ -77,7 +77,7 @@ class LogoController extends Controller
 
         if ($request->hasFile('image')) {
             if (Storage::disk('public')->exists($logo->url)) {
-                Storage::disk('public')->delete($logo->url);
+                // Storage::disk('public')->delete($logo->url);
             }
             $image = Storage::disk('public')->put('', $request->image);
             $logo->url = $image;

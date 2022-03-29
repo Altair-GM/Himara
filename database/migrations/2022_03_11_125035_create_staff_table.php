@@ -20,7 +20,7 @@ class CreateStaffTable extends Migration
             $table->string("img");
             $table->text("description");
             $table->unsignedBigInteger("fonction_id");
-            $table->foreign("fonction_id")->on("fonctions")->references("id");
+            $table->foreign("fonction_id")->on("fonctions")->references("id")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
