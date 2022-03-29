@@ -944,7 +944,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="copyrights">&copy; 2018 Hotel Himara. Designed by
+                        <div class="copyrights">&copy; 2022 Hotel Himara. Designed by
                             <a href="https://eagle-themes.com/" target="_blank">Eagle-Themes</a>.
                         </div>
                     </div>

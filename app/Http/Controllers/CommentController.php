@@ -30,10 +30,10 @@ class CommentController extends Controller
         $table->validate = false;
         $table->article_id = $id;
         $table->commentaire = $request->commentaire;
-        $table->photoProfil = "images/blog-post1.jpg";
+        $table->photoProfil = "images/blog/blog-post1.jpg";
 
         $table->save();
-        return  redirect()->back();
+        return  redirect()->back()->with(['success'=>'Commentaire envoyé avec succès ! Veuillez attendre sa validation.']);
     }
 
     // delete
@@ -41,19 +41,19 @@ class CommentController extends Controller
     {
         $destroy = Comment::find($id);
         $destroy->delete();
-        return  redirect()->back();
+        return  redirect()->back()->with(['success'=>'Commentaire supprimé avec succès !']);
     }
     public function update($id)
     {
         $comment = Comment::find($id);
         $comment->validate = true;
         $comment->save();
-        return redirect()->back();
+        return redirect()->back()->with(['success'=>'Commentaire validé avec succès !']);
     }
 
     public function index()
     {
-        $comment = Comment::all();
-        return view("admin.commentaire.index", compact("comment"));
+        $comments = Comment::all();
+        return view("admin.comments.index", compact("comments"));
     }
 }

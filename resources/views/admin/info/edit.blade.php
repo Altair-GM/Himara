@@ -1,7 +1,9 @@
 @extends('admin.layouts.index')
 
 @section('admin')
-    <div class="h-screen bg-indigo-100 flex justify-center items-center w-screen">
+    <div class="bg-indigo-100 flex justify-center items-center w-screen">
+        {{-- Alert --}}
+
         <div class="lg:w-2/5 md:w-1/2 w-2/3">
             <form class="bg-white p-10 rounded-lg shadow-lg min-w-full" action="{{ route('admin.info.update') }}"
                 method="POST" enctype="multipart/form-data">

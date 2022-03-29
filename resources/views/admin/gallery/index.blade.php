@@ -3,6 +3,7 @@
     <!-- component -->
     <div class=" flex items-center justify-center bg-amber-50 m-auto w-full">
 
+
         <div id="test" class="grid grid-cols-6 gap-x-4 gap-y-1 max-w-2xl w-screen">
 
             <!-- Title -->

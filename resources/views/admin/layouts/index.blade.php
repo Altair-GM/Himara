@@ -20,6 +20,8 @@
 <body  class="flex h-screen bg-gray-100 font-sans">
      @include('admin.components.sideBar')
      <div class="flex flex-row flex-wrap flex-1 flex-grow content-start pl-16 ">
+{{-- Alert --}}
+@include('components.Alert')
 
         <div class="h-40 lg:h-20 w-full flex flex-wrap">
     

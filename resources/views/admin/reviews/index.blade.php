@@ -34,13 +34,14 @@
         href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
         rel="stylesheet" />
     <div class="flex items-center justify-center min-h-screen bg-white w-full">
+        {{-- Alert --}}
+
         <div class="col-span-12">
             <div class="overflow-auto lg:overflow-visible">
 
                 <table class="table text-gray-400 border-separate space-y-6 text-sm">
                     <thead class="bg-blue-500 text-white">
                         <tr>
-                            <th class="p-3">Nom</th>
                             <th class="p-3 text-left">Nom</th>
                             <th class="p-3 text-left">Image</th>
                             <th class="p-3 text-left">Location</th>

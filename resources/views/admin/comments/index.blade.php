@@ -34,7 +34,7 @@
         href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
         rel="stylesheet" />
     <div class="flex items-center justify-center min-h-screen bg-white w-full">
-        {{-- Alert --}}
+
 
         <div class="col-span-12">
             <div class="overflow-auto lg:overflow-visible">
@@ -42,30 +42,37 @@
                 <table class="table text-gray-400 border-separate space-y-6 text-sm">
                     <thead class="bg-blue-500 text-white">
                         <tr>
-                            <th class="p-3">Adresse</th>
+                            <th class="p-3">Name</th>
                             <th class="p-3 text-left">Email</th>
-                            <th class="p-3 text-left">Téléphone</th>
-                            <th class="p-3 text-left">Gsm</th>
-
-                            <th class="p-3 text-left">Site</th>
+                            <th class="p-3 text-left">Website</th>
+                            <th class="p-3 text-left">Telephone</th>
+                            <th class="p-3 text-left">Commentaire</th>
+                            <th class="p-3 text-center">Photo Profil</th>
+                            <th class="p-3 text-left">Article</th>
                             <th class="p-3 text-left">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-
+                        @foreach($comments as $item)
                         <tr class="bg-blue-200 lg:text-black">
-                            <td class="p-3 font-medium capitalize">{{ $info->adresse }}</td>
-                            <td class="p-3">{{ $info->email }}</td>
-                            <td class="p-3">{{ $info->phone }}</td>
-                            <td class="p-3 uppercase">{{ $info->gsm }}</td>
-                            <td class="p-3 uppercase">{{ $info->site }}</td>
-
+                            <td class="p-3 font-medium capitalize">{{ $item->name }}</td>
+                            <td class="p-3">{{ $item->email }}</td>
+                            <td class="p-3">{{ $item->telephone ? $item->telephone : '/' }}</td>
+                            <td class="p-3 uppercase">{{ $item->website ? $item->website : '/' }}</td>
+                            <td class="p-3">{{ $item->commentaire }}</td>
+                            <td class="p-3"><img class="mx-auto" width="50%" src="{{ asset('storage/'.$item->photoProfil) }}" alt=""></td>
+                            <td class="p-3">{{ $item->article->title }}</td>
                             <td class="p-3">
-                                <a href="{{route('admin.info.edit')}}" class="text-yellow-400 hover:text-gray-100 mx-2">
-                                    <i class="material-icons-outlined text-base">edit</i>
+                                @if(!$item->validate)
+                                <a href="{{route('comment.validate', $item->id)}}" class="text-yellow-400 hover:text-gray-100 mx-2">
+                                    <i class="material-icons-outlined text-base">Valider</i>
                                 </a>
+                                @else
+                                Validé
+                                @endif
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

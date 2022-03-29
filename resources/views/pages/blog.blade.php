@@ -55,7 +55,7 @@
                                                 </span>
                                                 <span class="comments">
                                                     <a href="#">
-                                                        <i class="fa fa-commenting-o"></i>1 Comment</a>
+                                                        <i class="fa fa-commenting-o"></i> {{count($article->comments)}} Comment</a>
                                                 </span>
                                                 <span class="category">
                                                     <i class="fa fa-folder-open-o"></i>IN

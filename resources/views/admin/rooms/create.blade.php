@@ -2,10 +2,14 @@
 
 @section('admin')
     <!-- Create by joker banny -->
-    <div class="h-screen bg-indigo-100 flex justify-center items-center w-screen">
+    <div class="bg-indigo-100 flex justify-center items-center w-screen">
+        {{-- Alert --}}
+
         <div class="lg:w-2/5 md:w-1/2 w-2/3">
-            <form class="bg-white p-10 rounded-lg shadow-lg min-w-full" action="{{route('admin.chambres.store')}}" method="post" enctype="multipart/form-data">
+            <form class="bg-white p-10 rounded-lg shadow-lg min-w-full" action="{{ route('admin.chambres.store') }}"
+                method="post" enctype="multipart/form-data">
                 @csrf
+
                 <h1 class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">Ajouter une chambre</h1>
                 <div>
                     <label class="text-gray-800 font-semibold block my-3 text-md" for="nom">Nom</label>
@@ -47,7 +51,8 @@
                         class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-state" name="category_chambre_id">
                         @foreach ($category as $item)
-                            <option value="{{ $item->id }}">{{ $item->nom }}</option>
+                            <option value="{{ $item->id }}">
+                                {{ $item->nom }}</option>
                         @endforeach
 
                     </select>

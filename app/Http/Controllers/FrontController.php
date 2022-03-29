@@ -199,9 +199,8 @@ class FrontController extends Controller
     // PAge qui permet de rechercher les chambres via barre de recherche
     public function RoomSearch(Request $request)
     {
-
         $data = $request->data;
-        $roomListAll = Chambre::where('titre', 'like', "%$data%")
+        $roomListAll = Chambre::where('nom', 'like', "%$data%")
             ->paginate(3);
         $categoryRoom = CategoryChambre::all();
         $tagRoom = TagChambres::all();

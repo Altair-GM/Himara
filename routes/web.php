@@ -43,7 +43,7 @@ Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/loading', [FrontController::class, 'loading']);
 Route::get('/page', [FrontController::class, 'page']);
 Route::get('/rooms/list', [FrontController::class, 'roomlist'])->name('rooms');
-Route::post('/rooms/search', [FrontController::class, 'search'])->name('RoomSearch');
+Route::post('/rooms/search', [FrontController::class, 'RoomSearch'])->name('RoomSearch');
 Route::get('/room/{id}', [FrontController::class, 'room'])->name('room.show');
 Route::get('/rooms/search/{id}/categorie', [FrontController::class, 'searchRoomCategorie'])->name('roomCategorie');
 Route::get('/rooms/search/{id}/tags', [FrontController::class, 'tagRooms'])->name('tagRooms');
@@ -62,6 +62,7 @@ Route::get("/dashboard/contact", [InfoController::class, "index"])->name("admin.
 Route::get("/dashboard/article", [ArticlesController::class, "index"])->name("admin.article");
 Route::get("/dashboard/reservation", [ReservationController::class, "index"])->name("admin.reservation");
 Route::get("/dashboard/staff", [StaffController::class, "index"])->name("admin.staff");
+Route::get("/dashboard/comment", [CommentController::class, "index"])->name("admin.comment");
 // Route::get("/dashboard/review", [ReviewController::class, "index"])->name("admin.review");
 
 // {{ Articles }}
@@ -73,7 +74,6 @@ Route::delete("/dashboard/article/delete/{id}", [ArticlesController::class, "des
 
 // {{ Commentaires }}
 
-Route::get('/dashboard/comments/{id}/validate', [CommentController::class, 'update'])->name('comment.validate');
 Route::get('/dashboard/comments/{id}/validate', [CommentController::class, 'update'])->name('comment.validate');
 
 // {{ Chambres }}
