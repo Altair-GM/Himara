@@ -12,6 +12,7 @@ use App\Models\Chambre;
 use App\Models\Comment;
 use App\Models\Image;
 use App\Models\Info;
+use App\Models\logo;
 use App\Models\Service;
 use App\Models\Staff;
 use App\Models\Tag;
@@ -113,6 +114,7 @@ class FrontController extends Controller
 
     public function index()
     {
+        $logo = logo::first();
 
         $serviceAll = Service::all();
         $carousels = Carousel::all();
@@ -120,7 +122,7 @@ class FrontController extends Controller
         $category_chambres = CategoryChambre::all();
         $latestBlogs = Articles::latest()->take(3)->get();
         $rooms = Chambre::inRandomOrder()->take(3)->get();
-        return view("pages.home", compact("serviceAll", "imageAll", 'rooms', 'latestBlogs', 'carousels', 'category_chambres'));
+        return view("pages.home", compact("serviceAll", "imageAll", 'rooms', 'latestBlogs', 'carousels', 'category_chambres','logo'));
     }
 
     public function loading()
@@ -223,4 +225,12 @@ class FrontController extends Controller
 
         return view("pages.blogpost", compact("blog", "comment", 'categories', 'tags', 'latest'));
     }
+
+    // public function logo()
+    // {
+    //     dd("test");
+    //     $logo = logo::first();
+
+    //     return view('pages.home', compact("logo"));
+    // }
 }

@@ -19,7 +19,8 @@ class LogoController extends Controller
      */
     public function index()
     {
-        //
+        $logo = logo::first();
+        return view('admin.logo.index', compact('logo'));
     }
 
     /**
@@ -60,9 +61,10 @@ class LogoController extends Controller
      * @param  \App\Models\logo  $logo
      * @return \Illuminate\Http\Response
      */
-    public function edit(logo $logo)
+    public function edit()
     {
-        return view('admin.logo.index', compact('logo'));
+        $logo = logo::first();
+        return view('admin.logo.edit', compact('logo'));
     }
 
     /**
@@ -72,9 +74,10 @@ class LogoController extends Controller
      * @param  \App\Models\logo  $logo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, logo $logo)
+    public function update(Request $request)
     {
-
+        
+        $logo = logo::first();
         $request->validate([
             'image' => ['required', 'image']
         ]);

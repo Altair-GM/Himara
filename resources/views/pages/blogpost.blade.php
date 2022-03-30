@@ -13,13 +13,13 @@
 
 
 
-        <div class="blog-post-cover gradient-overlay op5" data-src="{{ asset('images/blog/post/blog-full.jpg') }}"
+        <div class="blog-post-cover gradient-overlay op5" data-src="{{ asset('storage/images/blog/post/blog-full.jpg') }}"
             data-parallax="scroll" data-speed="0.3" data-mirror-selector=".wrapper" data-z-index="0"
             style="margin-top: 0px;">
             <div class="container inner">
                 <h2 class="blog-post-title">{{ $blog->title }}</h2>
                 <div class="blog-post-info">
-                    <img alt="" src="{{ asset('images/blog/users/user1.jpg') }}" class="author-avatar" width="16">
+                    <img alt="" src="{{ asset('storage/images/blog/users/user1.jpg') }}" class="author-avatar" width="16">
                     <p>by
                         <span>
                             <a href="#">{{ $blog->author->name }}</a></span>
@@ -172,7 +172,7 @@
                                                 <div class="col-5">
                                                     <figure class="gradient-overlay-hover link-icon sm">
                                                         <a href="{{ route('blog.show', $item->id) }}">
-                                                            <img src="{{ asset($item->img) }}" class="img-fluid"
+                                                            <img src="{{ asset('storage/'.$item->img) }}" class="img-fluid"
                                                                 alt="Image">
                                                         </a>
                                                     </figure>
@@ -213,14 +213,14 @@
                         <!-- WIDGET -->
                         <div class="col-md-3">
                             <div class="footer-widget">
-                                <img src="{{ asset('images/logo.svg') }}" class="footer-logo" alt="Hotel Himara">
+                                <img src="{{ asset('storage/images/logo.svg') }}" class="footer-logo" alt="Hotel Himara">
                                 <div class="inner">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, velit placeat
                                         assumenda incidunt dolorem aliquam!</p>
                                     <a href="https://www.tripadvisor.com/" target="_blank">
                                         <div class="tripadvisor-banner">
                                             <span class="review">Recommended</span>
-                                            <img src="{{ asset('images/icons/tripadvisor.png') }}" alt="Image">
+                                            <img src="{{ asset('storage/images/icons/tripadvisor.png') }}" alt="Image">
                                         </div>
                                     </a>
                                 </div>

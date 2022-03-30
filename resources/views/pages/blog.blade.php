@@ -46,7 +46,7 @@
                                             </h2>
                                             <div class="post-meta">
                                                 <span class="author">
-                                                    <a href="#"><img src="images/users/admin.jpg" width="16"
+                                                    <a href="#"><img src="storage/images/users/admin.jpg" width="16"
                                                             alt="Image">{{ $article->author->nom }}</a>
                                                 </span>
                                                 <span class="date">

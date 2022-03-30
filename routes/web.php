@@ -9,8 +9,10 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\LogoController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\StaffController;
+use App\Models\logo;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +51,7 @@ Route::get('/rooms/search/{id}/categorie', [FrontController::class, 'searchRoomC
 Route::get('/rooms/search/{id}/tags', [FrontController::class, 'tagRooms'])->name('tagRooms');
 Route::get('/staff', [FrontController::class, 'staff'])->name('team');
 Route::get('/style/guide', [FrontController::class, 'style/guide']);
+// Route::get('/style/logossss', [FrontController::class, 'logo'])->name("logo");
 
 
 
@@ -133,3 +136,15 @@ Route::get('/dashboard/mailbox', [ContactController::class, "index"])->middlewar
 Route::get('/dashboard/mailbox/archives', [ContactController::class, "archives"])->middleware(["auth"])->name('mailbox.archive');
 Route::get('/dashboard/mailbox/{id}/delete', [ContactController::class, "destroy"])->middleware(["auth"])->name('mailbox.destroy');
 Route::get('/dashboard/mailbox/{id}/restore', [ContactController::class, "restore"])->middleware(["auth"])->name('mailbox.restore');
+
+
+// {{ logo }}
+Route::get("/dashboard/logo/create", [LogoController::class, "create"])->name("admin.logo.create");
+Route::post("/dashboard/logo/store", [LogoController::class, "store"])->name("admin.logo.store");
+Route::get("/dashboard/logo/edit/{id}", [LogoController::class, "edit"])->name("admin.logo.edit");
+Route::put("/dashboard/logo/edit/{id}", [LogoController::class, "update"])->name("admin.logo.update");
+Route::delete("/dashboard/logo/delete/{id}", [LogoController::class, "destroy"])->name("admin.logo.delete");
+
+Route::get("/dashboard/logo", [LogoController::class, "index"])->name("admin.logo");
+
+
