@@ -2,16 +2,18 @@
 
 @section('admin')
     <!-- Create by joker banny -->
-    <div class="h-screen bg-indigo-100 flex justify-center items-center w-screen">
+    <div class="bg-indigo-100 flex justify-center items-center w-screen">
+
         <div class="lg:w-2/5 md:w-1/2 w-2/3">
-            <form class="bg-white p-10 rounded-lg shadow-lg min-w-full" action="{{ route('admin.article.update', $articles->id) }}"
-                method="post" enctype="multipart/form-data">
+            <form class="bg-white p-10 rounded-lg shadow-lg min-w-full"
+                action="{{ route('admin.article.update', $articles->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method("PUT")
                 <h1 class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">Editer un article</h1>
                 <div>
                     <label class="text-gray-800 font-semibold block my-3 text-md" for="title">Title</label>
                     <input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="title"
-                        id="title" placeholder="title" value="{{$articles->title}}"/>
+                        id="title" placeholder="title" value="{{ $articles->title }}" />
                 </div>
 
                 <div>
@@ -22,7 +24,7 @@
                 <div>
                     <label class="text-gray-800 font-semibold block my-3 text-md" for="description">Description</label>
                     <textarea class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" name="description"
-                        id="description">{{$articles->description}}</textarea>
+                        id="description">{{ $articles->description }}</textarea>
                 </div>
 
                 <div class="relative mt-5">
@@ -30,7 +32,8 @@
                         class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-state" name="category_article_id">
                         @foreach ($category as $item)
-                            <option  @if ($item->id == $articles->category_article_id) selected @endif value="{{ $item->id }}">{{ $item->nom }}</option>
+                            <option @if ($item->id == $articles->category_article_id) selected @endif value="{{ $item->id }}">
+                                {{ $item->nom }}</option>
                         @endforeach
 
                     </select>
@@ -47,8 +50,8 @@
                         @foreach ($tags as $item)
                             <div>
                                 <label class="inline-flex items-center">
-                                    <input @if($articles->tags->contains($item->id)) checked @endif type="checkbox" class="form-checkbox text-indigo-600" value="{{ $item->id }}"
-                                        name="tag[]">
+                                    <input @if ($articles->tags->contains($item->id)) checked @endif type="checkbox"
+                                        class="form-checkbox text-indigo-600" value="{{ $item->id }}" name="tag[]">
                                     <span class="ml-2">{{ $item->nom }}</span>
                                 </label>
                             </div>

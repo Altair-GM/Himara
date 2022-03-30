@@ -67,7 +67,7 @@ class ArticlesController extends Controller
                 $article->tags()->attach($item);
             }
         }
-        return redirect()->route('article.index')->with(['success'=>'Article créé avec succès !']);
+        return redirect()->route('admin.article')->with(['success'=>'Article créé avec succès !']);
     }
 
     /**

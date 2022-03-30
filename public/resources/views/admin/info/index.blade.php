@@ -34,6 +34,8 @@
         href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
         rel="stylesheet" />
     <div class="flex items-center justify-center min-h-screen bg-white w-full">
+        {{-- Alert --}}
+
         <div class="col-span-12">
             <div class="overflow-auto lg:overflow-visible">
 

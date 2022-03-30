@@ -34,6 +34,7 @@
         href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
         rel="stylesheet" />
     <div class="flex items-center justify-center min-h-screen bg-white w-full">
+
         <div class="col-span-12">
             <div class="overflow-auto lg:overflow-visible">
 
@@ -42,10 +43,11 @@
                         <tr>
                             <th class="p-3">Nom</th>
                             <th class="p-3 text-left">Email</th>
-                            <th class="p-3 text-left">Téléphone</th>
+                            <th class="p-3 text-left">Commentaire</th>
+                            <th class="p-3 text-left">Telehpone</th>
+                            <th class="p-3 text-left">Country</th>
                             <th class="p-3 text-left">Date</th>
                             <th class="p-3 text-left">Invité(s)</th>
-                            <th class="p-3 text-left">Pays</th>
                             <th class="p-3 text-left">Type de chambre</th>
                             <th class="p-3 text-left">Action</th>
                         </tr>
@@ -55,11 +57,13 @@
                         <tr class="bg-blue-200 lg:text-black">
                             <td class="p-3 font-medium capitalize">{{ $item->nom }}</td>
                             <td class="p-3">{{ $item->email }}</td>
-                            <td class="p-3">{{ $item->telephone }}</td>
+                            <td class="p-3">{{ $item->commentaire ?$item->commentaire : '/' }}</td>
+                            <td class="p-3">{{ $item->telehpone ?$item->telehpone : '/' }}</td>
+                            <td class="p-3">{{ $item->country ?$item->country : '/' }}</td>
                             <td class="p-3 uppercase">{{ $item->debut }}-{{ $item->fin}}</td>
                             <td class="p-3 uppercase">{{ $item->adult }} adulte(s)/ {{ $item->enfant}} enfant(s)</td>
-                            <td class="p-3">{{ $item->country }}</td>
                             <td class="p-3">{{ $item->category->nom }}</td>
+                            
 
                             <td class="p-3">
                                 @if(!$item->valide)

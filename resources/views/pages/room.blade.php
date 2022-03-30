@@ -34,8 +34,8 @@
                             <!-- ITEM -->
                             <div class="item">
                                 <figure class="gradient-overlay-hover image-icon">
-                                    <a href="{{ asset($room->image) }}">
-                                        <img class="img-fluid" src="{{ asset($room->image) }}" alt="Image">
+                                    <a href="{{ asset('storage/'.$room->image) }}">
+                                        <img class="img-fluid" src="{{ asset('storage/'.$room->image) }}" alt="Image">
                                     </a>
                                 </figure>
                             </div>
@@ -43,7 +43,7 @@
                         </div>
                         <div id="room-thumbs" class="room-thumbs owl-carousel">
                             <!-- ITEM -->
-                            <div class="item"><img class="img-fluid" src="{{ asset($room->image) }}"
+                            <div class="item"><img class="img-fluid" src="{{ asset('storage/'.$room->image) }}"
                                     alt="Image"></div>
 
                         </div>
@@ -220,7 +220,7 @@
                         </div>
                         <div class="review-box">
                             <figure class="review-author">
-                                <img src="{{ asset('images/users/user1.jpg') }}" alt="Image">
+                                <img src="{{ asset('storage/images/users/user1.jpg') }}" alt="Image">
                             </figure>
                             <div class="review-contentt">
                                 <div class="rating">
@@ -245,7 +245,7 @@
                         <!-- End review-box -->
                         <div class="review-box clearfix">
                             <figure class="review-author">
-                                <img src="{{ asset('images/users/user2.jpg') }}" alt="Image">
+                                <img src="{{ asset('storage/images/users/user2.jpg') }}" alt="Image">
                             </figure>
                             <div class="review-contentt">
                                 <div class="rating">
@@ -270,7 +270,7 @@
                         <!-- End review-box -->
                         <div class="review-box clearfix">
                             <figure class="review-author">
-                                <img src="{{ asset('images/users/user3.jpg') }}" alt="Image">
+                                <img src="{{ asset('storage/images/users/user3.jpg') }}" alt="Image">
                             </figure>
                             <div class="review-contentt">
                                 <div class="rating">
@@ -304,7 +304,7 @@
                                 <div class="room-grid-item">
                                     <figure class="gradient-overlay-hover link-icon">
                                         <a href="room.html">
-                                            <img src="{{ asset('images/rooms/single/single1.jpg') }}"
+                                            <img src="{{ asset('storage/images/rooms/single/single1.jpg') }}"
                                                 class="img-fluid" alt="Image">
                                         </a>
                                         <div class="room-services">
@@ -333,7 +333,7 @@
                                 <div class="room-grid-item">
                                     <figure class="gradient-overlay-hover link-icon">
                                         <a href="room.html">
-                                            <img src="{{ asset('images/rooms/double/double.jpg') }}"
+                                            <img src="{{ asset('storage/images/rooms/double/double.jpg') }}"
                                                 class="img-fluid" alt="Image">
                                         </a>
                                         <div class="room-services">
@@ -362,7 +362,7 @@
                                 <div class="room-grid-item">
                                     <figure class="gradient-overlay-hover link-icon">
                                         <a href="room.html">
-                                            <img src="{{ asset('images/rooms/deluxe/deluxe.jpg') }}"
+                                            <img src="{{ asset('storage/images/rooms/deluxe/deluxe.jpg') }}"
                                                 class="img-fluid" alt="Image">
                                         </a>
                                         <div class="room-services">
@@ -487,7 +487,7 @@
                     <!-- WIDGET -->
                     <div class="col-md-3">
                         <div class="footer-widget">
-                            <img src="images/logo.svg" class="footer-logo" alt="Hotel Himara">
+                            <img src="storage/images/logo.svg" class="footer-logo" alt="Hotel Himara">
                             <div class="inner">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, velit placeat assumenda
                                     incidunt dolorem aliquam!</p>

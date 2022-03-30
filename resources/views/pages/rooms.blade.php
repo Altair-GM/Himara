@@ -29,7 +29,7 @@
                                 <div class="col-lg-5">
                                     <figure class="gradient-overlay-hover link-icon">
                                         <a href="{{ route('room.show', $item->id) }}"><img
-                                                src="{{ asset($item->image) }}" class="img-fluid" alt="Image"></a>
+                                                src="{{ asset('storage/'.$item->image) }}" class="img-fluid" alt="Image"></a>
                                     </figure>
                                     {{-- {{ asset("images/rooms/single/single1.jpg") }} --}}
                                 </div>

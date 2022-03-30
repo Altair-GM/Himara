@@ -255,25 +255,25 @@
                             <!-- ITEM -->
                             <div class="item">
                                 <a href="#">
-                                    <img src="images/providers/provider-1.png" alt="Image">
+                                    <img src="{{ asset('storage/images/providers/provider-1.png') }}" alt="Image">
                                 </a>
                             </div>
                             <!-- ITEM -->
                             <div class="item">
                                 <a href="#">
-                                    <img src="images/providers/provider-2.png" alt="Image">
+                                    <img src="{{ asset('storage/images/providers/provider-2.png') }}" alt="Image">
                                 </a>
                             </div>
                             <!-- ITEM -->
                             <div class="item">
                                 <a href="#">
-                                    <img src="images/providers/provider-3.png" alt="Image">
+                                    <img src="{{ asset('storage/images/providers/provider-3.png') }}" alt="Image">
                                 </a>
                             </div>
                             <!-- ITEM -->
                             <div class="item">
                                 <a href="#">
-                                    <img src="images/providers/provider-4.png" alt="Image">
+                                    <img src="{{ asset('storage/images/providers/provider-4.png') }}" alt="Image">
                                 </a>
                             </div>
                         </div>
@@ -355,25 +355,25 @@
                 <div class="col-lg-7 col-12">
                     <div data-slider-id="services" class="services-owl owl-carousel">
                         <figure class="gradient-overlay">
-                            <img src="images/services/restaurant.jpg" class="img-fluid" alt="Image">
+                            <img src="{{ asset('storage/images/services/restaurant.jpg')}}" class="img-fluid" alt="Image">
                             <figcaption>
                                 <h4>Restaurant</h4>
                             </figcaption>
                         </figure>
                         <figure class="gradient-overlay">
-                            <img src="images/services/spa.jpg" class="img-fluid" alt="Image">
+                            <img src="{{ asset('storage/images/services/spa.jpg')}}" class="img-fluid" alt="Image">
                             <figcaption>
                                 <h4>Spa</h4>
                             </figcaption>
                         </figure>
                         <figure class="gradient-overlay">
-                            <img src="images/services/conference.jpg" class="img-fluid" alt="Image">
+                            <img src="{{ asset('storage/images/services/conference.jpg')}}" class="img-fluid" alt="Image">
                             <figcaption>
                                 <h4>Conference Room</h4>
                             </figcaption>
                         </figure>
                         <figure class="gradient-overlay">
-                            <img src="images/services/swimming.jpg" class="img-fluid" alt="Image">
+                            <img src="{{ asset('storage/images/services/swimming.jpg')}}" class="img-fluid" alt="Image">
                             <figcaption>
                                 <h4>Swimming Pool</h4>
                             </figcaption>
@@ -944,7 +944,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="copyrights">&copy; 2018 Hotel Himara. Designed by
+                        <div class="copyrights">&copy; 2022 Hotel Himara. Designed by
                             <a href="https://eagle-themes.com/" target="_blank">Eagle-Themes</a>.
                         </div>
                     </div>
