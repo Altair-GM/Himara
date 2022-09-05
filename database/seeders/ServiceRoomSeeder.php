@@ -44,8 +44,3 @@ class ServiceRoomSeeder extends Seeder
     }
     }
 
-
-// الله
-//  إيكمال
-
-//  بالخير

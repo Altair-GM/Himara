@@ -32,18 +32,33 @@
             @csrf
              <div class="form-group">
                <input class="form-control" name="nom" placeholder="Nom" type="text">
+               @error('nom')
+              @include('components.Alert2')
+              @enderror
              </div>
              <div class="form-group">
                <input class="form-control" name="email" placeholder="Email" type="email">
+               @error('email')
+              @include('components.Alert2')
+              @enderror
              </div>
              <div class="form-group">
-               <input class="form-control" name="phone" placeholder="Phone" type="text">
+               <input class="form-control" name="phone" placeholder="Phone" type="text" >
+               @error('phone')
+              @include('components.Alert2')
+              @enderror
              </div>
              <div class="form-group">
-               <input class="form-control" name="sujet" placeholder="Sujet" type="text">
+               <input class="form-control" name="sujet" placeholder="Sujet" type="text" >
+               @error('sujet')
+              @include('components.Alert2')
+              @enderror
              </div>
              <div class="form-group">
                <textarea class="form-control" name="msg" placeholder="Message"></textarea>
+               @error('msg')
+              @include('components.Alert2')
+              @enderror
              </div>
              <div class="form-group">
                <button class="btn mt30">SEND YOUR MESSAGE</button>

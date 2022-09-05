@@ -818,12 +818,21 @@
                         @csrf
                         <div class="form-group">
                             <input class="form-control" name="nom" placeholder="Your Name" type="text">
+                            @error('nom')
+              @include('components.Alert2')
+              @enderror
                         </div>
                         <div class="form-group">
                             <input class="form-control" name="email" type="email" placeholder="Your Email Address">
+                            @error('nom')
+              @include('components.Alert2')
+              @enderror
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" name="msg" placeholder="Your Message"></textarea>
+                            @error('nom')
+              @include('components.Alert2')
+              @enderror
                         </div>
                         <button class="btn" type="submit">
                             <i class="fa fa-location-arrow"></i>Send Message</button>

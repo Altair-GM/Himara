@@ -21,6 +21,8 @@
                         <input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="file" name="url"
                             id="confirm" placeholder="Url" value="{{ $logo->url }}" />
                     </div>
+                    <button type="submit"
+                            class="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">Register</button>
                     {{-- <div class="relative">
                         <select
                             class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
